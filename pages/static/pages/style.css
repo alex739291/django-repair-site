@@ -1,0 +1,458 @@
+/* === ОСНОВНЫЕ СТИЛИ === */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* === 1. ШАПКА (HEADER) === */
+header {
+  /* Эффект прилипания */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* Оформление */
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+/* Контейнер для содержимого шапки (Лого + Кнопка) */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  /* Лого слева, кнопка справа */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Логотип */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-icon {
+  height: 50px;
+  width: auto;
+  mix-blend-mode: multiply;
+  /* Убирает белый фон у картинки */
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* --- СТИЛИ ДЛЯ МЕНЮ (NAVBAR) --- */
+.main-nav {
+  flex-grow: 1;
+  /* Меню занимает все свободное место в центре */
+  margin: 0 40px;
+  /* Отступы от лого и кнопки */
+}
+
+.nav-list {
+  list-style: none;
+  /* Убираем точки списка */
+  display: flex;
+  /* Выстраиваем в ряд */
+  justify-content: center;
+  /* По центру */
+  padding: 0;
+  margin: 0;
+  gap: 30px;
+  /* Расстояние между ссылками */
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  /* Все буквы заглавные, как у профи */
+  transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: #e67e22;
+  /* Оранжевый при наведении */
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #003366;
+  text-transform: uppercase;
+}
+
+.city-name {
+  font-size: 18px;
+  font-weight: 900;
+  color: #000;
+}
+
+/* === 2. ГЛАВНЫЙ БАННЕР (HERO) === */
+.hero {
+  /* Фото на фоне с затемнением */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+/* === 3. КАРТОЧКИ УСЛУГ (GRID) === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  padding: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  /* Картинка не обрезается */
+  margin-bottom: 15px;
+}
+
+.card-content {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* Чтобы кнопка всегда была внизу */
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #003366;
+}
+
+.price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #e67e22;
+  /* Оранжевая цена */
+  margin: 10px 0;
+}
+
+/* === 4. КНОПКИ === */
+
+/* Главная оранжевая кнопка (Hero) */
+.cta-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #e67e22;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #d35400;
+}
+
+/* Универсальная синяя кнопка (Карточки, Формы) */
+.card-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #003366;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  /* Центрирование в карточке */
+  align-self: center;
+  margin-top: auto;
+}
+
+.card-btn:hover {
+  background-color: #002244;
+}
+
+/* === 5. ФОРМЫ === */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  /* Чтобы padding не ломал ширину */
+}
+
+.form-input:focus {
+  border-color: #e67e22;
+  outline: none;
+}
+
+.success-box {
+  background: #d4edda;
+  color: #155724;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #c3e6cb;
+}
+
+/* === 6. ДЕТАЛЬНАЯ СТРАНИЦА === */
+.detail-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* === 7. ПОДВАЛ (FOOTER) === */
+footer {
+  background-color: #333;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* --- МОБИЛЬНОЕ МЕНЮ (Гамбургер) --- */
+
+/* Скрываем гамбургер на больших экранах */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+/* --- АНИМАЦИЯ ПРИ СКРОЛЛЕ (Scroll Reveal) --- */
+
+/* Исходное состояние: элемент скрыт и сдвинут вниз */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px); /* Сдвинут на 50px вниз */
+    transition: all 0.8s ease;   /* Плавное появление за 0.8 сек */
+}
+
+/* Конечное состояние: элемент виден и стоит на месте */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Настройки для телефонов */
+@media (max-width: 800px) {
+
+  /* Показываем гамбургер */
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+    /* Поверх всего */
+  }
+
+  /* Скрываем обычное меню */
+  .main-nav {
+    display: none;
+    /* Скрыто по умолчанию */
+    position: absolute;
+    top: 100%;
+    /* Сразу под шапкой */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Класс, который будет добавлять JavaScript, чтобы показать меню */
+  .main-nav.active {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    /* Ссылки вертикально */
+    gap: 20px;
+  }
+
+  /* Анимация превращения гамбургера в крестик (по желанию) */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+/* --- COOKIE BANNER --- */
+.cookie-banner {
+    position: fixed;
+    bottom: -100%; /* Изначально спрятан далеко внизу */
+    left: 0;
+    width: 100%;
+    background-color: #222; /* Темный фон */
+    color: white;
+    padding: 15px 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    z-index: 2000; /* Поверх всего сайта */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+    transition: bottom 0.5s ease-in-out; /* Плавный выезд */
+}
+
+/* Класс, который мы добавим через JS, чтобы показать баннер */
+.cookie-banner.show {
+    bottom: 0;
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.cookie-banner a {
+    color: #e67e22;
+    text-decoration: underline;
+}
+
+.cookie-btn {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap; /* Чтобы текст не переносился */
+    transition: background 0.3s;
+}
+
+.cookie-btn:hover {
+    background-color: #d35400;
+}
+
+/* --- СООБЩЕНИЯ (ALERTS) --- */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* На мобильных ставим текст и кнопку друг под другом */
+@media (max-width: 600px) {
+    .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* === 8. МОБИЛЬНАЯ ВЕРСИЯ === */
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .card {
+    width: 100%;
+    /* Карточки на всю ширину на телефоне */
+  }
+
+}
+
+/* Скрываем меню на мобильных (пока что), чтобы не ломало дизайн */
+@media (max-width: 800px) {
+  .main-nav {
+    display: none;
+  }
+}

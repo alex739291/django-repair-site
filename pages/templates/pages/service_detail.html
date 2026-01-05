@@ -1,0 +1,57 @@
+{% extends 'pages/base.html' %}
+{% block title %}Riparazione {{ service.title }} a Como | Prezzi e Info{% endblock %}
+
+{% block description %}Hai problemi con {{ service.title }}? Offriamo assistenza rapida a Como per {{ service.title }}. Ricambi originali e garanzia.{% endblock %}
+
+{% block content %}
+
+    <div class="container" style="max-width: 800px; margin: 40px auto; padding: 20px;">
+        
+        <a href="{% url 'home' %}" style="color: #666; text-decoration: none; margin-bottom: 20px; display: inline-block;">⬅ Torna alla Home</a>
+
+        <h1 style="text-align: center; color: #003366;">{{ service.title }}</h1>
+        
+        <div class="detail-card" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            
+            <img src="{{ service.image.url }}" alt="{{ service.title }}" 
+                 style="width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto 20px auto; border-radius: 5px;">
+            
+            <p class="price" style="font-size: 24px; text-align: center; color: #e67e22;">{{ service.price }}</p>
+            
+            <div class="description" style="font-size: 18px; line-height: 1.6; color: #555;">
+                {{ service.description }}
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="margin-bottom: 10px; font-weight: bold;">Preferisci parlare con noi?</p>
+                <a href="tel:+39123456789" class="cta-button" style="display: inline-block; width: auto;">📞 Chiama Subito: 02 1234 5678</a>
+            </div>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+            <h3 style="text-align: center; color: #333;">Richiedi un preventivo</h3>
+
+            {% if success %}
+                <div class="success-box" style="background: #d4edda; color: #155724; padding: 20px; border-radius: 5px; text-align: center; margin-top: 20px;">
+                    ✅ <strong>Grazie!</strong> La tua richiesta è stata inviata.<br>Ti contatteremo a breve.
+                </div>
+            {% else %}
+                <form method="post" style="max-width: 400px; margin: 0 auto;">
+                    {% csrf_token %}
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px;">Nome:</label>
+                        {{ form.name }}
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px;">Telefono:</label>
+                        {{ form.phone }}
+                    </div>
+
+                    <button type="submit" class="card-btn" style="width: 100%; border: none; cursor: pointer;">Invia Richiesta</button>
+                </form>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

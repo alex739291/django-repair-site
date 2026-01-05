@@ -1,0 +1,25 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+<section style="padding: 60px 20px; text-align: center;">
+    <div class="container" style="max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #003366; margin-bottom: 20px;">Compila il modulo</h2>
+        <p style="margin-bottom: 30px;">Descrivi il problema e ti richiameremo al più presto.</p>
+
+        <form method="POST" action="" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
+            {% csrf_token %}
+            
+            <label>Il tuo nome:</label>
+            <input type="text" name="name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+            <label>Il tuo telefono:</label>
+            <input type="tel" name="phone" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+            <label>Descrizione del guasto (opzionale):</label>
+            <textarea name="message" rows="4" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+
+            <button type="submit" class="cta-button" style="margin-top: 10px; border: none; cursor: pointer;">Invia Richiesta</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
