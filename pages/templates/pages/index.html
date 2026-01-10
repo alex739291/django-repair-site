@@ -14,7 +14,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
         <p>Intervento in giornata. Garanzia di qualità.</p>
 
         <div class="hero-btn" style="justify-content: center;">
-            <a href="tel:+393317167874" class="cta-button orange">
+            <a href="tel:{{ phone_number }}" class="cta-button orange">
                 📞 Chiama Ora
             </a>
             <a href="{% url 'contact' %}" class="cta-button">
@@ -31,7 +31,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
         <div class="services-grid">
             {% for service in services %}
-            <div class="service-card reveal" style="background-image: url('{{ service.image.url }}');">
+            <div class="service-card reveal" style="background-image: url('{{ service.get_webp_url }}');">
                 <div class="overlay"></div>
                 <div class="card-content">
                     <div class="card-top">
@@ -160,8 +160,8 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
         <p style="font-size: 14px; opacity: 0.8; margin-bottom: 15px;">— OPPURE —</p>
 
-        <a href="tel:+393317167874" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px;">
-            📞 Chiamaci ora: 3317167874
+        <a href="tel:{{ phone_number }}" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px;">
+            📞 Chiamaci ora: {{ phone_number }}
         </a>
     </div>
 </section>
@@ -171,13 +171,13 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "AlexRepair Elettrodomestici",
+  "name": "Tecnico Elettrodomestici",
   "image": "https://www.tecnicoelettrodomesticicomo.it/static/pages/images/logo.png",
   "telephone": "+393317167874",
   "priceRange": "€€",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Via Esempio 1",
+    "streetAddress": "Via dei Partigiani, 24",
     "addressLocality": "Como",
     "addressCountry": "IT"
   }

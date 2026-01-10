@@ -1,0 +1,14 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Errore 500 | 500{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center; padding: 100px 20px;">
+    <h1 style="font-size: 80px; color: #d9534f; margin-bottom: 20px;">500</h1>
+    <h2 style="margin-bottom: 20px;">Errore 500</h2>
+    <p style="color: #666; margin-bottom: 40px; font-size: 18px;">
+        Si è verificato un errore. Riprova più tardi.
+    </p>
+    <a href="{% url 'home' %}" class="cta-button">Torna alla Home</a>
+</div>
+{% endblock %}

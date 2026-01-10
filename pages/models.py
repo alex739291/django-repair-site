@@ -1,11 +1,14 @@
 from django.db import models
 from django.urls import reverse
+import os
 
 class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nome del servizio")
     description = models.TextField(verbose_name="Descrizione del servizio", blank=True)
     price = models.CharField(max_length=50, verbose_name="Prezzo", default="a partire da 50€")
     image = models.ImageField(upload_to='services/', verbose_name="Immagine del servizio")
+    def get_webp_url(self):
+        return os.path.splitext(self.image.url)[0] + '.webp'
     
     def __str__(self):
         return self.title
@@ -39,4 +42,22 @@ class Brand(models.Model):
     image = models.ImageField(upload_to='brands/', verbose_name="Immagine del marchio")
     description = models.TextField(verbose_name="Descrizione del marchio", blank=True)
     slug = models.SlugField(unique=True, verbose_name="URL")
-   
+    def get_webp_url(self):
+        if self.image:
+            return os.path.splitext(self.image.url)[0] + '.webp'
+        return ''
+
+    def get_webp_logo_url(self):
+        if self.logo:
+            return os.path.splitext(self.logo.url)[0] + '.webp'
+        return ''
+
+    def __str__(self):
+        return self.title 
+    
+    def get_absolute_url(self):
+        return reverse('brand_detail', kwargs={'slug': self.slug})
+    
+    class Meta:
+        verbose_name = "Marchio"
+        verbose_name_plural = "Marchi"

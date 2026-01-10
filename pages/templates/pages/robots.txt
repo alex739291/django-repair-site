@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Allow: /
 
-Sitemap: https://www.alexriparazioni.it/sitemap.xml
+Sitemap: https://www.tecnicoelettrodomesticicomo.it/sitemap.xml

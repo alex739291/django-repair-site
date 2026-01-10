@@ -3,6 +3,7 @@ from .models import Service, Order, Brand
 from .forms import OrderForm
 from django.contrib import messages
 import requests
+
 # Create your views here.
 def home(request):
     if request.method == 'POST':
@@ -78,15 +79,13 @@ def send_telegram(message):
     data = {'chat_id': chat_id, 'text': message}
 
     try:
-        requests.post(url, data=data)
+        requests.post(url, data=data, timeout=5)
     except:
-        print("Ошибка отправки в Telegram") 
+        print("Errore di invio Telegram") 
         
 def privacy(request):
     return render(request, 'pages/privacy.html')       
 
-from django.shortcuts import render, get_object_or_404
-from .models import Brand  # Не забудьте импортировать вашу модель
 
 def brand_detail(request, slug):
     # Ищем бренд по slug. Если такого нет — выдаст ошибку 404 (Страница не найдена)

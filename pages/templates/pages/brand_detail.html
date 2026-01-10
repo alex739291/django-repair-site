@@ -5,9 +5,9 @@
     <div class="brand-container">
         <div class="brand-media">
             {% if brand.image %}
-                <img src="{{ brand.image.url }}" alt="Assistenza {{ brand.title }}">
+                <img src="{{ brand.get_webp_url }}" alt="Assistenza Elettrodomestici {{ brand.title }}">
             {% else %}
-                <img src="{{ brand.logo.url }}" alt="Logo {{ brand.title }}">
+                <img src="{{ brand.get_webp_logo_url }}" alt="Logo Tecnico {{ brand.title }}">
             {% endif %}
         </div>
 

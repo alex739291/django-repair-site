@@ -19,6 +19,7 @@
         content="{% block og_desc %}Assistenza rapida per lavatrici e frigoriferi. Uscita in giornata!{% endblock %}">
     <meta property="og:image" content="{% static 'pages/images/hero-bg.jpg' %}">
     <meta property="og:url" content="https://www.tecnicoelettrodomesticicomo.it/">
+    <link rel="canonical" href="https://www.tecnicoelettrodomesticicomo.it{{ request.path }}">
     <link rel="stylesheet" href="{% static 'pages/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -31,7 +32,7 @@
             <div class="header-content">
                 <a href="{% url 'home' %}" style="text-decoration: none;">
                     <div class="logo-container">
-                        <img src="{% static 'pages/images/logo.png' %}" alt="Logo" class="logo-icon">
+                        <img src="{% static 'pages/images/logo.webp' %}" alt="Logo Riparazioni Elettrodomestici Como" class="logo-icon">
                         <div class="logo-text">
                             <span class="brand-name">Riparazioni Elettrodomestici</span>
                             <span class="city-name">Como</span>
@@ -54,7 +55,7 @@
                     <span></span>
                 </div>
 
-                <a href="tel:+393317167874" class="cta-button header-phone">📞 3317167874</a>
+                <a href="tel:{{ phone_number }}" class="cta-button header-phone">📞 {{ phone_number }}</a>
             </div>
         </header>
         {% if messages %}
