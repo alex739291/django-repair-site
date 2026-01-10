@@ -1,0 +1,28 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+<section class="brand-detail-section">
+    <div class="brand-container">
+        <div class="brand-media">
+            {% if brand.image %}
+                <img src="{{ brand.image.url }}" alt="Assistenza {{ brand.title }}">
+            {% else %}
+                <img src="{{ brand.logo.url }}" alt="Logo {{ brand.title }}">
+            {% endif %}
+        </div>
+
+        <div class="brand-info">
+            <h1>Assistenza tecnica {{ brand.title }}</h1>
+            
+            <div class="brand-text">
+                {{ brand.description|linebreaks }}
+            </div>
+            
+            <div class="action-area">
+                <p>Hai problemi con un elettrodomestico {{ brand.title }}?</p>
+                <a href="{% url 'contact' %}" class="btn-ordina">Richiedi un intervento</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

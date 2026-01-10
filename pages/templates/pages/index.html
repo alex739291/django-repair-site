@@ -1,226 +1,185 @@
 {% extends 'pages/base.html' %}
-{% block title %}Riparazione Elettrodomestici Como - Uscita in 15 min{% endblock %}
-
-{% block description %}Il miglior servizio di riparazione a Como. Ripariamo lavatrici, frigoriferi, forni, asciugatrici, . Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 {% load static %}
 
+{% block title %}Riparazione Elettrodomestici Como - Uscita in 15 min{% endblock %}
+
+{% block description %}Il miglior servizio di riparazione a Como. Ripariamo lavatrici, frigoriferi, forni, asciugatrici.
+Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
+
 {% block content %}
-<style>
-    .hover-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .hover-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
-        cursor: pointer;
-    }
-</style>
 
 <section class="hero">
-    <div class="hero-content">
+    <div class="container">
         <h1>Elettrodomestici guasti? Li ripariamo noi!</h1>
         <p>Intervento in giornata. Garanzia di qualità.</p>
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
 
-            <a href="tel:+39123456789" class="cta-button" style="text-decoration: none;">
+        <div class="hero-btn" style="justify-content: center;">
+            <a href="tel:+393317167874" class="cta-button orange">
                 📞 Chiama Ora
             </a>
-
-            <a href="{% url 'contact' %}" class="cta-button" style="background-color: #003366; text-decoration: none;">
+            <a href="{% url 'contact' %}" class="cta-button">
                 📝 Compila Modulo
             </a>
-
         </div>
     </div>
 </section>
-<section id="why-us" style="background: #f9f9f9; padding: 60px 20px; text-align: center;">
+
+<section id="services" class="services-section">
     <div class="container">
+        <h2 class="section-title reveal" style="text-align: center; margin-bottom: 40px; color: #003366;">I Nostri
+            Servizi</h2>
+
+        <div class="services-grid">
+            {% for service in services %}
+            <div class="service-card reveal" style="background-image: url('{{ service.image.url }}');">
+                <div class="overlay"></div>
+                <div class="card-content">
+                    <div class="card-top">
+                        <h3>{{ service.title }}</h3>
+                        <p class="service-price">{{ service.price }}</p>
+                    </div>
+                    <a href="{% url 'service_detail' service.pk %}" class="cta-button">Dettagli</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="why-us" style="background: #f9f9f9; padding: 60px 0; text-align: center;">
+    <div class="container reveal">
         <h2 style="color: #003366; margin-bottom: 40px;">Perché scegliere noi?</h2>
 
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
-            <div style="max-width: 300px;" class="reveal">
+            <div style="max-width: 300px;">
                 <div style="font-size: 40px; margin-bottom: 10px;">🚀</div>
-                <h3 style="color: #333;">Intervento in Giornata</h3>
+                <h3 style="color: #333; margin-bottom: 10px;">Intervento in Giornata</h3>
                 <p style="color: #666;">Il 90% delle riparazioni viene effettuato lo stesso giorno della chiamata.</p>
             </div>
 
-            <div style="max-width: 300px;" class="reveal">
+            <div style="max-width: 300px;">
                 <div style="font-size: 40px; margin-bottom: 10px;">🛡️</div>
-                <h3 style="color: #333;">Garanzia Completa</h3>
+                <h3 style="color: #333; margin-bottom: 10px;">Garanzia Completa</h3>
                 <p style="color: #666;">Offriamo fino a 12 mesi di garanzia su ricambi e manodopera.</p>
             </div>
 
-            <div style="max-width: 300px;" class="reveal">
+            <div style="max-width: 300px;">
                 <div style="font-size: 40px; margin-bottom: 10px;">💰</div>
-                <h3 style="color: #333;">Prezzi Trasparenti</h3>
+                <h3 style="color: #333; margin-bottom: 10px;">Prezzi Trasparenti</h3>
                 <p style="color: #666;">Nessun costo nascosto. Preventivo chiaro prima di iniziare il lavoro.</p>
             </div>
         </div>
     </div>
 </section>
+<section id="brands" class="reveal brands-section">
+    <div class="container">
+        <h2 class="brands-title">I Marchi che Ripariamo</h2>
 
-<div class="container">
-    <h2 id="services" class="reveal" style="text-align: center; margin-top: 40px; scroll-margin-top: 100px;">I Nostri
-        Servizi</h2>
-    <div class="row">
-        {% for service in services %}
-        <div class="col-md-3 col-sm-6 mb-4">
-            <div class="card h-100 shadow-sm hover-card">
-
-                <div style="height: 200px; overflow: hidden;">
-                    <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.title }}" style="object-fit: cover; height: 100%; width: 100%;">
+        <div class="swiper myBrandSwiper">
+            <div class="swiper-wrapper">
+                {% for brand in brands %}
+                <div class="swiper-slide brand-slide">
+                    <a href="{% url 'brand_detail' brand.slug %}" class="brand-card">
+                        <img src="{{ brand.logo.url }}" alt="{{ brand.title }}">
+                    </a>
                 </div>
+                {% empty %}
+                <p>Nessun marchio disponibile.</p>
+                {% endfor %}
+            </div>
 
-                <div class="card-body">
-                    <h5 class="card-title">{{ service.title }}</h5>
-                    <p class="card-text">{{ service.description|truncatewords:10 }}</p>
-                    <p class="card-text text-warning fw-bold">Prezzo: a partire da {{ service.price }}€</p>
-                    <a href="#" class="btn btn-primary w-100">Ordina ora!</a>
-                </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+    </div>
+</section>
+
+<section id="reviews" class="reveal" style="background: #fff; padding: 60px 0; text-align: center;">
+    <div class="container">
+        <h2 style="color: #003366; margin-bottom: 40px;">Cosa dicono i nostri clienti</h2>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+            <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px; max-width: 300px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <div style="color: #ffb400; font-size: 20px; margin-bottom: 10px;">★★★★★</div>
+                <p style="font-style: italic; color: #555;">"Veloci e professionali. Il mio frigo ha ripreso a
+                    funzionare in un'ora!"</p>
+                <p style="font-weight: bold; margin-top: 15px; color: #333;">- Mario R.</p>
+            </div>
+
+            <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px; max-width: 300px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <div style="color: #ffb400; font-size: 20px; margin-bottom: 10px;">★★★★★</div>
+                <p style="font-style: italic; color: #555;">"Prezzo onesto e tecnico molto gentile. Mi hanno spiegato
+                    tutto."</p>
+                <p style="font-weight: bold; margin-top: 15px; color: #333;">- Giulia B.</p>
+            </div>
+
+            <div
+                style="background: #f9f9f9; padding: 20px; border-radius: 10px; max-width: 300px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <div style="color: #ffb400; font-size: 20px; margin-bottom: 10px;">★★★★★</div>
+                <p style="font-style: italic; color: #555;">"Ottimo servizio. Sono arrivati lo stesso giorno della
+                    chiamata."</p>
+                <p style="font-weight: bold; margin-top: 15px; color: #333;">- Luca T.</p>
             </div>
         </div>
-        {% endfor %}
-    </div>
-
-
-</div>
-
-<section id="brands" class="reveal" style="padding: 50px 20px; text-align: center;">
-    <h2 style="color: #003366; margin-bottom: 20px;">I Marchi che Ripariamo</h2>
-    <p style="color: #666; margin-bottom: 40px;">Siamo specializzati in tutti i principali marchi di elettrodomestici.
-    </p>
-
-    <div
-        style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-weight: bold; color: #888; font-size: 24px; text-transform: uppercase;">
-        <span style="padding: 10px 20px; border: 2px solid #eee; border-radius: 5px;">Samsung</span>
-        <span style="padding: 10px 20px; border: 2px solid #eee; border-radius: 5px;">LG</span>
-        <span style="padding: 10px 20px; border: 2px solid #eee; border-radius: 5px;">Bosch</span>
-        <span style="padding: 10px 20px; border: 2px solid #eee; border-radius: 5px;">Whirlpool</span>
-        <span style="padding: 10px 20px; border: 2px solid #eee; border-radius: 5px;">Miele</span>
-        <span style="padding: 10px 20px; border: 2px solid #eee; border-radius: 5px;">Indesit</span>
-        <span style="padding: 10px 20px; border: 2px solid #eee; border-radius: 5px;">Candy</span>
-    </div>
-</section>
-<section id="reviews" class="reveal" style="background: #fff; padding: 60px 20px; text-align: center;">
-    <h2 style="color: #003366; margin-bottom: 40px;">Cosa dicono i nostri clienti</h2>
-
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-        <div
-            style="background: #f9f9f9; padding: 20px; border-radius: 10px; max-width: 300px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <div style="color: #ffb400; font-size: 20px; margin-bottom: 10px;">★★★★★</div>
-            <p style="font-style: italic; color: #555;">"Veloci e professionali. Il mio frigo ha ripreso a funzionare in
-                un'ora! Tecnico molto preparato."</p>
-            <p style="font-weight: bold; margin-top: 15px; color: #333;">- Mario R.</p>
-        </div>
-
-        <div
-            style="background: #f9f9f9; padding: 20px; border-radius: 10px; max-width: 300px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <div style="color: #ffb400; font-size: 20px; margin-bottom: 10px;">★★★★★</div>
-            <p style="font-style: italic; color: #555;">"Prezzo onesto e tecnico molto gentile. Mi hanno spiegato tutto
-                prima di iniziare il lavoro."</p>
-            <p style="font-weight: bold; margin-top: 15px; color: #333;">- Giulia B.</p>
-        </div>
-
-        <div
-            style="background: #f9f9f9; padding: 20px; border-radius: 10px; max-width: 300px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <div style="color: #ffb400; font-size: 20px; margin-bottom: 10px;">★★★★★</div>
-            <p style="font-style: italic; color: #555;">"Ottimo servizio. Sono arrivati lo stesso giorno della chiamata
-                e avevano già il ricambio."</p>
-            <p style="font-weight: bold; margin-top: 15px; color: #333;">- Luca T.</p>
-        </div>
     </div>
 </section>
 
-<section id="faq" class="reveal" style="background: #f4f4f4; padding: 60px 20px;">
+<section id="faq" class="reveal" style="background: #f4f4f4; padding: 60px 0;">
     <div class="container" style="max-width: 800px;">
         <h2 style="color: #003366; text-align: center; margin-bottom: 40px;">Domande Frequenti</h2>
 
-        <details
-            style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <details style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer;">
             <summary style="font-weight: bold; color: #333; outline: none;">Quanto costa l'uscita del tecnico?</summary>
-            <p style="margin-top: 10px; color: #666; line-height: 1.6;">L'uscita è gratuita se accetti il preventivo di
-                riparazione. Altrimenti chiediamo un piccolo contributo per la diagnosi.</p>
+            <p style="margin-top: 10px; color: #666;">L'uscita è gratuita se accetti il preventivo di riparazione.</p>
         </details>
 
-        <details
-            style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <details style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer;">
             <summary style="font-weight: bold; color: #333; outline: none;">Date garanzia sulla riparazione?</summary>
-            <p style="margin-top: 10px; color: #666; line-height: 1.6;">Sì, offriamo fino a 12 mesi di garanzia sui
-                pezzi di ricambio sostituiti e sulla manodopera.</p>
-        </details>
-
-        <details
-            style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <summary style="font-weight: bold; color: #333; outline: none;">Intervenite anche nei weekend?</summary>
-            <p style="margin-top: 10px; color: #666; line-height: 1.6;">Sì, siamo operativi anche il sabato. In casi di
-                emergenza (come frigo rotto) interveniamo anche la domenica.</p>
+            <p style="margin-top: 10px; color: #666;">Sì, offriamo fino a 12 mesi di garanzia sui pezzi di ricambio.</p>
         </details>
     </div>
 </section>
 
-<section id="contact" class="contact"
-    style="background-color: #003366; color: white; padding: 60px 20px; text-align: center; margin-top: 40px;">
+<section id="contact" class="reveal"
+    style="background-color: #003366; color: white; padding: 60px 0; text-align: center;">
     <div class="container" style="max-width: 500px;">
-        <h2 style="color: white; margin-bottom: 15px;">Richiedi un Preventivo Gratuito</h2>
+        <h2 style="color: white; margin-bottom: 15px;">Richiedi un Preventivo</h2>
         <p style="color: #eee; margin-bottom: 30px;">Compila il modulo e ti richiameremo entro 15 minuti.</p>
 
         <form method="POST" action="" class="contact-form"
             style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
             {% csrf_token %}
-            <input type="text" name="name" placeholder="Il tuo nome" required
-                style="padding: 15px; border-radius: 5px; border: none; width: 100%; box-sizing: border-box;">
+            <input type="text" name="name" placeholder="Il tuo nome" required class="form-input">
+            <input type="tel" name="phone" placeholder="Il tuo numero di telefono" required class="form-input">
 
-            <input type="tel" name="phone" placeholder="Il tuo numero di telefono" required
-                style="padding: 15px; border-radius: 5px; border: none; width: 100%; box-sizing: border-box;">
-
-            <button type="submit" class="cta-button"
-                style="border: none; cursor: pointer; width: 100%; font-size: 18px;">
-                Invia Richiesta
-            </button>
+            <button type="submit" class="cta-button orange" style="width: 100%; border: none;">Invia Richiesta</button>
         </form>
 
         <p style="font-size: 14px; opacity: 0.8; margin-bottom: 15px;">— OPPURE —</p>
 
-        <a href="tel:+39123456789"
-            style="color: white; text-decoration: none; font-weight: bold; font-size: 18px; display: inline-flex; align-items: center; gap: 10px;">
-            📞 Chiamaci ora: 02 1234 5678
+        <a href="tel:+393317167874" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px;">
+            📞 Chiamaci ora: 3317167874
         </a>
     </div>
 </section>
+
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "AlexRepair Elettrodomestici",
-  "image": "https://твоя-ссылка-на-лого.jpg",
-  "@id": "",
-  "url": "https://твоя-ссылка-на-сайт.com",
-  "telephone": "+39123456789",
+  "image": "https://www.tecnicoelettrodomesticicomo.it/static/pages/images/logo.png",
+  "telephone": "+393317167874",
   "priceRange": "€€",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via Esempio 1",
     "addressLocality": "Como",
-    "postalCode": "22100",
     "addressCountry": "IT"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 45.808,
-    "longitude": 9.085
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "opens": "08:00",
-    "closes": "20:00"
   }
 }
 </script>

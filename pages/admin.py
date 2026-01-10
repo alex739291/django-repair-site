@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Order, Service  # Импортируем обе модели
+from .models import Order, Service, Brand  # Импортируем обе модели
 
 # 1. Просто регистрируем Услуги (как и было)
 admin.site.register(Service)
+admin.site.register(Brand)
 
 # 2. Регистрируем Заказы с красивой таблицей (это заменяет старую строку)
 @admin.register(Order)

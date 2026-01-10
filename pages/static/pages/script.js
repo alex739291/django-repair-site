@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- 1. МОБИЛЬНОЕ МЕНЮ (ГАМБУРГЕР) ---
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.main-nav');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (var i = 0; i < reveals.length; i++) {
             var windowHeight = window.innerHeight;
             var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150; // Начинаем анимацию, когда элемент показался на 150px
+            var elementVisible = 150;
 
             if (elementTop < windowHeight - elementVisible) {
                 reveals[i].classList.add("active");
@@ -34,29 +34,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Слушаем скролл
     window.addEventListener("scroll", reveal);
-    
-    // Запускаем один раз сразу, чтобы показать верхние элементы
-    reveal();
+    reveal(); // Запускаем один раз сразу
+
+    // --- 3. COOKIE BANNER ---
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
 
-    // Проверяем, есть ли запись в памяти браузера
-    if (!localStorage.getItem('cookiesAccepted')) {
-        // Если нет, показываем баннер через 2 секунды (чтобы не пугать сразу)
+    if (!localStorage.getItem('cookiesAccepted') && cookieBanner) {
         setTimeout(() => {
             cookieBanner.classList.add('show');
         }, 2000);
     }
 
-    // Когда нажали кнопку "Accetto"
     if (acceptBtn) {
         acceptBtn.addEventListener('click', () => {
-            // Убираем баннер
             cookieBanner.classList.remove('show');
-            // Записываем в память: "Этот человек согласился!"
             localStorage.setItem('cookiesAccepted', 'true');
         });
     }
+
+    // --- 4. АВТО-ЗАКРЫТИЕ СООБЩЕНИЙ ---
+    const alerts = document.querySelectorAll('.alert');
+
+    if (alerts.length > 0) {
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = "0";
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+            }, 5000);
+        });
+    }
+
+    // --- 5. СЛАЙДЕР БРЕНДОВ (SWIPER) ---
+    // Проверяем, есть ли слайдер на странице, чтобы избежать ошибок
+    if (document.querySelector(".myBrandSwiper")) {
+        var swiper = new Swiper(".myBrandSwiper", {
+            slidesPerView: 1,     // На мобильном
+            spaceBetween: 20,
+            loop: true,           // Бесконечная прокрутка
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1, // Планшет
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 5, // ПК
+                    spaceBetween: 40,
+                },
+            },
+        });
+    }
+
 });

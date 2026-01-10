@@ -1,57 +1,109 @@
 {% extends 'pages/base.html' %}
-{% block title %}Riparazione {{ service.title }} a Como | Prezzi e Info{% endblock %}
-
-{% block description %}Hai problemi con {{ service.title }}? Offriamo assistenza rapida a Como per {{ service.title }}. Ricambi originali e garanzia.{% endblock %}
+{% block title %}Riparazione {{ service.title }} a Como - AlexRepair{% endblock %}
 
 {% block content %}
 
-    <div class="container" style="max-width: 800px; margin: 40px auto; padding: 20px;">
-        
-        <a href="{% url 'home' %}" style="color: #666; text-decoration: none; margin-bottom: 20px; display: inline-block;">⬅ Torna alla Home</a>
+<section class="service-hero">
+    <div class="overlay"></div>
+    <div class="container hero-text-container">
+        <h1 class="service-title reveal">{{ service.title }}</h1>
+        <p class="service-subtitle reveal">Assistenza tecnica rapida e garantita a Como e provincia</p>
+    </div>
+</section>
 
-        <h1 style="text-align: center; color: #003366;">{{ service.title }}</h1>
-        
-        <div class="detail-card" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            
-            <img src="{{ service.image.url }}" alt="{{ service.title }}" 
-                 style="width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto 20px auto; border-radius: 5px;">
-            
-            <p class="price" style="font-size: 24px; text-align: center; color: #e67e22;">{{ service.price }}</p>
-            
-            <div class="description" style="font-size: 18px; line-height: 1.6; color: #555;">
-                {{ service.description }}
+<div class="container detail-page-container">
+
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">Home</a> &rsaquo; <span>{{ service.title }}</span>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="service-info">
+            <h2 class="detail-heading">Assistenza {{ service.title }}: Perché conviene?</h2>
+
+            <div class="detail-description">
+                {{ service.description|linebreaks }}
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <p style="margin-bottom: 10px; font-weight: bold;">Preferisci parlare con noi?</p>
-                <a href="tel:+39123456789" class="cta-button" style="display: inline-block; width: auto;">📞 Chiama Subito: 02 1234 5678</a>
-            </div>
 
-            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
-            <h3 style="text-align: center; color: #333;">Richiedi un preventivo</h3>
-
-            {% if success %}
-                <div class="success-box" style="background: #d4edda; color: #155724; padding: 20px; border-radius: 5px; text-align: center; margin-top: 20px;">
-                    ✅ <strong>Grazie!</strong> La tua richiesta è stata inviata.<br>Ti contatteremo a breve.
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>Garanzia 12 Mesi</h4>
+                    <p>Su ricambi e lavoro</p>
                 </div>
-            {% else %}
-                <form method="post" style="max-width: 400px; margin: 0 auto;">
+                <div class="feature-item">
+                    <div class="feature-icon">⚙️</div>
+                    <h4>Ricambi Originali</h4>
+                    <p>Solo pezzi certificati</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚀</div>
+                    <h4>Uscita Rapida</h4>
+                    <p>Anche in giornata</p>
+                </div>
+            </div>
+
+            <div class="price-highlight">
+                <span class="price-label">Prezzo stimato:</span>
+                <span class="price-value">{{ service.price }}</span>
+                <p class="price-note">*Il prezzo finale dipende dal tipo di guasto</p>
+            </div>
+
+            <div class="mini-faq">
+                <h3>Domande Frequenti</h3>
+                <details>
+                    <summary>Quanto tempo ci vuole?</summary>
+                    <p>Solitamente risolviamo il problema in 1 ora al primo intervento.</p>
+                </details>
+                <details>
+                    <summary>Intervenite su tutte le marche?</summary>
+                    <p>Sì, i nostri tecnici sono formati per riparare tutti i principali brand.</p>
+                </details>
+            </div>
+        </div>
+
+        <div class="service-sidebar">
+            <div class="order-box sticky-box">
+                <div class="order-header">
+                    <h3>Richiedi Intervento</h3>
+                    <p>Ti richiamiamo in 15 min!</p>
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    ✅ {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+
+                <form method="post" class="detail-form">
                     {% csrf_token %}
-                    
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px;">Nome:</label>
+                    <div class="form-group">
+                        <label>Il tuo Nome</label>
                         {{ form.name }}
                     </div>
-
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px;">Telefono:</label>
+                    <div class="form-group">
+                        <label>Telefono</label>
                         {{ form.phone }}
                     </div>
 
-                    <button type="submit" class="card-btn" style="width: 100%; border: none; cursor: pointer;">Invia Richiesta</button>
-                </form>
-            {% endif %}
+                    <button type="submit" class="cta-button orange full-width">
+                        Prenota Ora
+                    </button>
 
+                    <p class="secure-text">🔒 I tuoi dati sono al sicuro</p>
+                </form>
+
+                <div class="call-box-mobile">
+                    <p>Preferisci chiamare?</p>
+                    <a href="tel:+393317167874" class="phone-link-big">📞 3317167874</a>
+                </div>
+            </div>
         </div>
+
     </div>
+</div>
 
 {% endblock %}

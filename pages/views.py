@@ -1,30 +1,48 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Service, Order
+from .models import Service, Order, Brand
 from .forms import OrderForm
 from django.contrib import messages
 import requests
 # Create your views here.
 def home(request):
-    services = Service.objects.all()
-    return render(request, "pages/index.html", {"services": services})
-
-def service_detail(request, pk):
-    service = get_object_or_404(Service, pk=pk)
-    
-    # Если клиент отправил заполненную форму (нажал кнопку)
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            # Создаем заказ, но пока не сохраняем в базу (commit=False)
-            order = form.save(commit=False)
-            # Прикрепляем к заказу текущую услугу (например, Холодильник)
-            order.service = service
-            # Теперь сохраняем окончательно
-            order.save()
-            # Показываем страницу с сообщением об успехе
-            return render(request, 'pages/service_detail.html', {'service': service, 'success': True})
+            order = form.save()
+            message_text = f"🔥 Nuovo contatto dalla Home!\n👤 Nome: {order.name}\n📞 Tel: {order.phone}"
+
+            send_telegram(message_text)
+           
+            messages.success(request, 'Grazie! Ti richiameremo entro 15 minuti.')
+            return redirect('home')
     
-    # Если клиент просто зашел на страницу
+    services = Service.objects.all()
+    brands = Brand.objects.all()
+    context = {
+        "services": services,
+        "brands": brands
+    }
+    
+    return render(request, "pages/index.html", context)
+
+def service_detail(request, pk):
+    # Находим услугу по ID (например, Холодильник)
+    service = get_object_or_404(Service, pk=pk)
+    
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        
+        if form.is_valid():
+           
+            order = form.save()
+            message_text = f"🔥 Nuovo contatto dalla Home!\n👤 Nome: {order.name}\n📞 Tel: {order.phone}"
+
+            send_telegram(message_text)
+           
+            messages.success(request, 'Grazie! La tua richiesta è stata inviata. Ti richiameremo a breve.')
+            
+            return redirect('service_detail', pk=pk)
+            
     else:
         form = OrderForm()
 
@@ -62,4 +80,20 @@ def send_telegram(message):
     try:
         requests.post(url, data=data)
     except:
-        print("Ошибка отправки в Telegram") # Чтобы сайт не сломался, если нет интернета    
+        print("Ошибка отправки в Telegram") 
+        
+def privacy(request):
+    return render(request, 'pages/privacy.html')       
+
+from django.shortcuts import render, get_object_or_404
+from .models import Brand  # Не забудьте импортировать вашу модель
+
+def brand_detail(request, slug):
+    # Ищем бренд по slug. Если такого нет — выдаст ошибку 404 (Страница не найдена)
+    brand = get_object_or_404(Brand, slug=slug)
+    
+    context = {
+        'brand': brand
+    }
+    # Обратите внимание: путь к шаблону из вашего скриншота
+    return render(request, 'pages/brand_detail.html', context)

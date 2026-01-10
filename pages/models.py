@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nome del servizio")
@@ -6,9 +7,11 @@ class Service(models.Model):
     price = models.CharField(max_length=50, verbose_name="Prezzo", default="a partire da 50€")
     image = models.ImageField(upload_to='services/', verbose_name="Immagine del servizio")
     
-    # Эта функция нужна, чтобы в админке отображалось название, а не "Service object (1)"
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('service_detail', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = "Servizio"
@@ -29,3 +32,11 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Ordine"
         verbose_name_plural = "Ordini"
+
+class Brand(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Nome del marchio")
+    logo = models.FileField(upload_to='brands/', verbose_name="Logo del marchio")
+    image = models.ImageField(upload_to='brands/', verbose_name="Immagine del marchio")
+    description = models.TextField(verbose_name="Descrizione del marchio", blank=True)
+    slug = models.SlugField(unique=True, verbose_name="URL")
+   

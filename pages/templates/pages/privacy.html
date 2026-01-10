@@ -1,0 +1,28 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Privacy Policy | AlexRepair{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; padding: 40px 20px;">
+    <h1 style="color: #003366;">Informativa sulla Privacy</h1>
+    <p style="color: #666;">Ultimo aggiornamento: 01/01/2026</p>
+
+    <hr style="margin: 20px 0;">
+
+    <h3>1. Chi siamo</h3>
+    <p>L'indirizzo del nostro sito web è: https://www.tecnicoelettrodomesticicomo.it.</p>
+
+    <h3>2. Quali dati personali raccogliamo</h3>
+    <p>Quando compili il modulo di contatto, raccogliamo il tuo nome e numero di telefono solo per poterti richiamare.</p>
+
+    <h3>3. Cookie</h3>
+    <p>Utilizziamo i cookie per migliorare la tua esperienza sul sito. Continuando a navigare, accetti il loro utilizzo.</p>
+
+    <h3>4. Contatti</h3>
+    <p>Per qualsiasi domanda sulla privacy, puoi contattarci al numero 02 1234 5678.</p>
+
+    <div style="margin-top: 40px;">
+        <a href="{% url 'home' %}" class="cta-button" style="text-decoration: none;">⬅ Torna alla Home</a>
+    </div>
+</div>
+{% endblock %}
