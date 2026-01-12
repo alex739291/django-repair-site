@@ -1,4 +1,12 @@
 {% extends 'pages/base.html' %}
+{% block title %}Assistenza {{ brand.title }} a Como: Assistenza Rapida - AlexRepair{% endblock %}
+
+{% block description %}Cerchi assistenza {{ brand.title }} a Como? Ripariamo elettrodomestici {{ brand.title }} con ricambi originali e garanzia 12 mesi. Intervento rapido. Chiamaci ora!{% endblock %}
+
+{% block og_title %}Assistenza tecnica {{ brand.title }} a Como{% endblock %}
+{% block og_desc %}Riparazione professionale elettrodomestici {{ brand.title }} a Como e provincia. Tecnici specializzati e ricambi originali.{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{{ brand.image.url }}{% endblock %}
 
 {% block content %}
 <section class="brand-detail-section">

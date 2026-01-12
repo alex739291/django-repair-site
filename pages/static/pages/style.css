@@ -357,49 +357,56 @@ header {
 /* --- Страница бренда (Brand Detail) --- */
 
 .brand-detail-section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto; /* Центрируем блок на странице */
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Центрируем блок на странице */
 }
 
 .brand-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr; /* Картинка занимает 1 часть, текст 1.5 части */
-    gap: 50px; /* Расстояние между картинкой и текстом */
-    align-items: start;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  /* Картинка занимает 1 часть, текст 1.5 части */
+  gap: 50px;
+  /* Расстояние между картинкой и текстом */
+  align-items: start;
 }
 
 .brand-media img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px; /* Скругленные углы */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Легкая тень */
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  /* Скругленные углы */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Легкая тень */
+  object-fit: cover;
 }
 
 .brand-info h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #333; /* Или ваш основной цвет */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+  /* Или ваш основной цвет */
 }
 
 .brand-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
 }
 
 .action-area {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    border-left: 5px solid #ff6b6b; /* Акцентная полоска слева */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #ff6b6b;
+  /* Акцентная полоска слева */
 }
 
 .action-area p {
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 
@@ -824,6 +831,97 @@ footer {
   cursor: pointer;
   font-weight: bold;
 }
+.thanks-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.thanks-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.thanks-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.thanks-section h1 {
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+.thanks-section p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.thanks-actions {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.emergency-note {
+    margin-top: 20px;
+    font-size: 16px !important;
+}
+
+.emergency-note a {
+    color: #e67e22;
+    text-decoration: none;
+    font-size: 20px;
+}
+/* =========================================
+   13. ЗОНЫ ОБСЛУЖИВАНИЯ (COVERAGE)
+   ========================================= */
+.coverage-section {
+  padding: 60px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.coverage-title {
+  text-align: center;
+  color: #003366;
+  /* Ваш основной синий */
+  margin-bottom: 20px;
+}
+
+.coverage-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #666;
+}
+
+.coverage-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.coverage-column {
+  min-width: 250px;
+}
+
+.coverage-subtitle {
+  color: #e67e22;
+  /* Ваш акцентный оранжевый */
+  border-bottom: 2px solid #e67e22;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.coverage-list {
+  list-style: none;
+  padding: 0;
+  line-height: 2.2;
+  color: #444;
+}
 
 /* =========================================
    12. АДАПТИВНОСТЬ (MEDIA QUERIES)
@@ -906,6 +1004,20 @@ footer {
     flex-direction: column;
     text-align: center;
     gap: 10px;
+  }
+
+  .coverage-grid {
+    gap: 30px;
+  }
+
+  .coverage-column {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .coverage-subtitle {
+    display: inline-block;
+    width: 100%;
   }
 }
 
@@ -1003,8 +1115,9 @@ footer {
 
 /* Адаптив для телефонов */
 @media (max-width: 768px) {
-    .brand-container {
-        grid-template-columns: 1fr; /* Одна колонка */
-        gap: 30px;
-    }
+  .brand-container {
+    grid-template-columns: 1fr;
+    /* Одна колонка */
+    gap: 30px;
+  }
 }

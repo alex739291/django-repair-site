@@ -1,6 +1,10 @@
 {% extends 'pages/base.html' %}
-{% block title %}Riparazione {{ service.title }} a Como - AlexRepair{% endblock %}
-
+{% block title %}Assistenza {{ service.title }} a Como - AlexRepair{% endblock %}
+{% block description %}Assistenza {{ service.title }} a Como: riparazioni rapide 24/7 con garanzia per Akai, Bosch, Samsung, Whirlpool, Miele, e molti altri marchi. {{ service.price }}. Chiamaci ora! 🇮🇹{% endblock %}
+{% block og_title %}Assistenza {{ service.title }} a Como{% endblock %}
+{% block og_desc %}Assistenza {{ service.title }} a Como: riparazioni rapide 24/7 con garanzia per Akai, Bosch, Samsung, Whirlpool, Miele, e molti altri marchi. {{ service.price }}. Chiamaci ora! 🇮🇹{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{{ service.image.url }}{% endblock %}
 {% block content %}
 
 <section class="service-hero">

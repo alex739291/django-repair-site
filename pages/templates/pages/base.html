@@ -6,19 +6,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="{% block description %}Assistenza tecnica professionale per lavatrici, frigoriferi e lavastoviglie a Como e provincia. Uscita rapida, prezzi onesti.{% endblock %}">
+        content="{% block description %}Assistenza tecnica professionale per lavatrici,frigoriferi,lavastoviglie,asciugatrici Como e provincia. Uscita rapida, prezzi onesti.{% endblock %}">
     <meta name="keywords"
-        content="riparazione elettrodomestici, como, assistenza lavatrici, tecnico frigo, assistenza asciugatrice">
-    <title>{% block title %}Riparazione Elettrodomestici a Como | HomeRepair{% endblock %}</title>
+        content="assistenza elettrodomestici Como, assistenza lavatrici, tecnico frigo, assistenza asciugatrice">
+    <title>{% block title %}Assistenza Elettrodomestici a Como | HomeRepair{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'pages/favicon.png' %}" />
 
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Riparazioni Elettrodomestici Como">
-    <meta property="og:title" content="{% block og_title %}Riparazione Elettrodomestici a Como{% endblock %}">
+    <meta property="og:site_name" content="Assistenza Elettrodomestici Como">
+    <meta property="og:title" content="{% block og_title %}Assistenza Elettrodomestici a Como{% endblock %}">
     <meta property="og:description"
-        content="{% block og_desc %}Assistenza rapida per lavatrici e frigoriferi. Uscita in giornata!{% endblock %}">
-    <meta property="og:image" content="{% static 'pages/images/hero-bg.jpg' %}">
-    <meta property="og:url" content="https://www.tecnicoelettrodomesticicomo.it/">
+        content="{% block og_desc %}Assistenza rapida per lavatrici, frigoriferi, asciugatrici, lavastoviglie. Uscita in giornata!{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'pages/images/logo.png' %}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
     <link rel="canonical" href="https://www.tecnicoelettrodomesticicomo.it{{ request.path }}">
     <link rel="stylesheet" href="{% static 'pages/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -32,7 +32,8 @@
             <div class="header-content">
                 <a href="{% url 'home' %}" style="text-decoration: none;">
                     <div class="logo-container">
-                        <img src="{% static 'pages/images/logo.webp' %}" alt="Logo Riparazioni Elettrodomestici Como" class="logo-icon">
+                        <img src="{% static 'pages/images/logo.webp' %}" alt="Logo Riparazioni Elettrodomestici Como"
+                            class="logo-icon">
                         <div class="logo-text">
                             <span class="brand-name">Riparazioni Elettrodomestici</span>
                             <span class="city-name">Como</span>
@@ -72,7 +73,18 @@
         {% endblock %}
 
         <footer>
-            <p>&copy; 2026 Riparazioni Elettrodomestici Como. Tutti i diritti riservati.</p>
+            <div class="container">
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: #fff; margin-bottom: 10px;">Assistenza Elettrodomestici Como</h3>
+                    <p>📍 Via dei Partigiani, 24, 22100 Como (CO)</p>
+                    <p>📞 <a href="tel:{{ phone_number }}" style="color: #ccc; text-decoration: none;">{{ phone_number }}</a></p>
+                    <p>⏰ Servizio di pronto intervento 24/7</p>
+                </div>
+                <p style="font-size: 0.8rem; opacity: 0.6;">
+                    &copy; 2026 Assistenza Elettrodomestici Como. Tutti i diritti riservati. |
+                    <a href="{% url 'privacy' %}" style="color: #666;">Privacy Policy</a>
+                </p>
+            </div>
         </footer>
         <div id="cookie-banner" class="cookie-banner">
             <p>Utilizziamo i cookie per migliorare la tua esperienza. Continuando a navigare accetti la nostra <a
