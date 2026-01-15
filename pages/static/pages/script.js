@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    window.addEventListener("scroll", reveal);
+    window.addEventListener("scroll", reveal, { passive: true });
     reveal(); // Запускаем один раз сразу
 
     // --- 3. COOKIE BANNER ---
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 5. СЛАЙДЕР БРЕНДОВ (SWIPER) ---
     // Проверяем, есть ли слайдер на странице, чтобы избежать ошибок
     if (document.querySelector(".myBrandSwiper")) {
-        var swiper = new Swiper(".myBrandSwiper", {
+        const swiper = new Swiper(".myBrandSwiper", {
             slidesPerView: 1,     // На мобильном
             spaceBetween: 20,
             loop: true,           // Бесконечная прокрутка

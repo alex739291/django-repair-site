@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="it" aria-label="Assistenza elettrodomestici Como">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
@@ -21,11 +21,11 @@
     <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
     <link rel="canonical" href="https://www.tecnicoelettrodomesticicomo.it{{ request.path }}">
     <link rel="preload" as="image"
-        href="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=70&w=800&auto=format&fit=crop"
+        href="{% static 'pages/images/hero-bg.avif' %}"
         media="(max-width: 800px)" fetchpriority="high">
 
     <link rel="preload" as="image"
-        href="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
+        href="{% static 'pages/images/hero-bg.avif' %}"
         media="(min-width: 801px)" fetchpriority="high">
 
     <style>
@@ -122,7 +122,7 @@
         /* HERO */
         .hero {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop');
+                url('/static/pages/images/hero-bg.avif');
             background-size: cover;
             background-position: center;
             color: white;
@@ -251,7 +251,7 @@
 
             .hero {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=70&w=800&auto=format&fit=crop');
+                    url('/static/pages/images/hero-bg.avif');
             }
 
             .main-nav {
@@ -348,7 +348,7 @@
                 <a href="{% url 'home' %}" style="text-decoration: none;">
                     <div class="logo-container">
                         <img src="{% static 'pages/images/logo.webp' %}" alt="Logo Assistenza Elettrodomestici Como"
-                            class="logo-icon">
+                            class="logo-icon" width="200" height="98">
                         <div class="logo-text">
                             <span class="brand-name">Assistenza Elettrodomestici</span>
                             <span class="city-name">Como</span>
