@@ -1,15 +1,19 @@
 {% extends 'pages/base.html' %}
 {% load static %}
 
-{% block title %}Riparazione Elettrodomestici Como - Uscita in 15 min{% endblock %}
+{% block title %}Assistenza Elettrodomestici Como - Uscita in 15 min{% endblock %}
 
-{% block description %}Il miglior servizio di riparazione a Como. Ripariamo lavatrici, frigoriferi, forni, asciugatrici.
+{% block description %}Il miglior servizio di assistenza a Como. Assistenza rapida per lavatrici, frigoriferi, forni, asciugatrici.
 Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
 {% block content %}
 
 <section class="hero">
     <div class="container">
+        <div class="emergency-247">
+            <span class="pulse-dot"></span>
+            <strong>Pronto Intervento 24/7</strong>
+        </div>
         <h1>Elettrodomestici guasti? Li ripariamo noi!</h1>
         <p>Intervento in giornata. Garanzia di qualità.</p>
 
@@ -207,17 +211,46 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Tecnico Elettrodomestici",
+  "@type": "RepairService", 
+  "name": "Assistenza Elettrodomestici Como",
+  "alternateName": "Tecnico Elettrodomestici Como",
   "image": "https://www.tecnicoelettrodomesticicomo.it/static/pages/images/logo.png",
+  "url": "https://www.tecnicoelettrodomesticicomo.it/",
   "telephone": "+393317167874",
   "priceRange": "€€",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via dei Partigiani, 24",
     "addressLocality": "Como",
+    "postalCode": "22100",
     "addressCountry": "IT"
-  }
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.8038, 
+    "longitude": 9.0911
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "areaServed": {
+    "@type": "City",
+    "name": "Como"
+  },
+  "description": "Servizio di riparazione elettrodomestici a Como e provincia attivo 24/7. Assistenza rapida per lavatrici, lavastoviglie, frigoriferi e forni di tutte le marche."
 }
 </script>
 
