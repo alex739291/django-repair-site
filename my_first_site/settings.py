@@ -23,9 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-d9)$+bcb%_$w*8jn!$8$sdi-su@ml@t0rxxam8i&p+857(b%2@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['www.tecnicoelettrodomesticicomo.it', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'www.tecnicoelettrodomesticicomo.it', 
+    'tecnicoelettrodomesticicomo.it', 
+    'sashaFirsthProj.pythonanywhere.com',  
+    '127.0.0.1',                           
+    'localhost',
+]
 
 
 # Application definition
@@ -44,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -124,4 +131,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 SITE_ID = 1
-
+WHITENOISE_MAX_AGE = 31536000  
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

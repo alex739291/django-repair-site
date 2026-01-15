@@ -95,7 +95,7 @@ h1 {
 }
 
 .nav-list a:hover {
-  color: #e67e22;
+  color: #d35400;
 }
 
 .hero-btn {
@@ -152,11 +152,11 @@ h1 {
 }
 
 .cta-button.orange {
-  background-color: #e67e22;
+  background-color: #d35400;
 }
 
 .cta-button.orange:hover {
-  background-color: #d35400;
+  background-color: #c34900;
 }
 
 /* =========================================
@@ -431,7 +431,7 @@ h1 {
 }
 
 .form-input:focus {
-  border-color: #e67e22;
+  border-color: #d35400;
   outline: none;
 }
 
@@ -663,7 +663,7 @@ h1 {
 .price-value {
   font-size: 2rem;
   font-weight: bold;
-  color: #e67e22;
+  color: #d35400;
 }
 
 .price-note {
@@ -767,7 +767,7 @@ h1 {
    ========================================= */
 footer {
   background-color: #333;
-  color: #ccc;
+  color: #dddddd;
   text-align: center;
   padding: 20px;
   margin-top: 40px;
@@ -830,7 +830,7 @@ footer {
 }
 
 .cookie-btn {
-  background-color: #e67e22;
+  background-color: #d35400;
   color: white;
   border: none;
   padding: 8px 20px;
@@ -877,7 +877,7 @@ footer {
 }
 
 .emergency-note a {
-  color: #e67e22;
+  color: #d35400;
   text-decoration: none;
   font-size: 20px;
 }
@@ -964,9 +964,9 @@ footer {
 }
 
 .coverage-subtitle {
-  color: #e67e22;
+  color: #d35400;
   /* Ваш акцентный оранжевый */
-  border-bottom: 2px solid #e67e22;
+  border-bottom: 2px solid #d35400;
   padding-bottom: 8px;
   margin-bottom: 15px;
   font-size: 1.2rem;

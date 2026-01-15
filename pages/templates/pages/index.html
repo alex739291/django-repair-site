@@ -3,7 +3,8 @@
 
 {% block title %}Assistenza Elettrodomestici Como - Uscita in 15 min{% endblock %}
 
-{% block description %}Il miglior servizio di assistenza a Como. Assistenza rapida per lavatrici, frigoriferi, forni, asciugatrici.
+{% block description %}Il miglior servizio di assistenza a Como. Assistenza rapida per lavatrici, frigoriferi, forni,
+asciugatrici.
 Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
 {% block content %}
@@ -18,10 +19,10 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
         <p>Intervento in giornata. Garanzia di qualità.</p>
 
         <div class="hero-btn" style="justify-content: center;">
-            <a href="tel:{{ phone_number }}" class="cta-button orange">
+            <a href="tel:3317167874" class="cta-button orange" aria-label="Chiamata rapida">
                 📞 Chiama Ora
             </a>
-            <a href="{% url 'contact' %}" class="cta-button">
+            <a href="{% url 'contact' %}" class="cta-button" aria-label="Compila modulo">
                 📝 Compila Modulo
             </a>
         </div>
@@ -42,7 +43,8 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
                         <h3>{{ service.title }}</h3>
                         <p class="service-price">{{ service.price }}</p>
                     </div>
-                    <a href="{% url 'service_detail' service.pk %}" class="cta-button">Dettagli</a>
+                    <a href="{% url 'service_detail' service.pk %}" class="cta-button"
+                        aria-label="Dettagli">Dettagli</a>
                 </div>
             </div>
             {% endfor %}
@@ -108,7 +110,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
         <div class="coverage-grid">
             <div class="coverage-column">
-                <h4 class="coverage-subtitle">🏙️ Quartieri di Como</h4>
+                <h3 class="coverage-subtitle">🏙️ Quartieri di Como</h3>
                 <ul class="coverage-list">
                     <li>📍 Centro Città</li>
                     <li>📍 Tavernola</li>
@@ -120,7 +122,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
             </div>
 
             <div class="coverage-column">
-                <h4 class="coverage-subtitle">🚗 Comuni Limitrofi</h4>
+                <h3 class="coverage-subtitle">🚗 Comuni Limitrofi</h3>
                 <ul class="coverage-list">
                     <li>📍 Cernobbio</li>
                     <li>📍 Brunate</li>
@@ -200,9 +202,8 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
         <p style="font-size: 14px; opacity: 0.8; margin-bottom: 15px;">— OPPURE —</p>
 
-        <a href="tel:{{ phone_number }}"
-            style="color: white; text-decoration: none; font-weight: bold; font-size: 18px;">
-            📞 Chiamaci ora: {{ phone_number }}
+        <a href="tel:3317167874" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px;">
+            📞 Chiamaci ora: 3317167874
         </a>
     </div>
 </section>

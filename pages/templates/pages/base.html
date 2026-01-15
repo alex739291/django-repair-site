@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" aria-label="Assistenza elettrodomestici Como">
 
 <head>
     <meta charset="UTF-8">
@@ -116,7 +116,7 @@
         }
 
         .nav-list a:hover {
-            color: #e67e22;
+            color: #d35400;
         }
 
         /* HERO */
@@ -165,11 +165,11 @@
         }
 
         .cta-button.orange {
-            background-color: #e67e22;
+            background-color: #d35400;
         }
 
         .cta-button.orange:hover {
-            background-color: #d35400;
+            background-color: #c34900;
         }
 
         /* HAMBURGER */
@@ -365,45 +365,47 @@
                         <li><a href="#contact">Contatti</a></li>
                     </ul>
                 </nav>
-                <div class="hamburger">
+                <div class="hamburger" aria-label="Menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
 
 
-                <a href="tel:{{ phone_number }}" class="cta-button header-phone">📞 {{ phone_number }}</a>
+                <a href="tel:3317167874" class="cta-button header-phone" aria-label="Chiamata rapida">📞 3317167874</a>
             </div>
         </header>
-        {% if messages %}
-        <div class="container" style="margin-top: 20px;">
-            {% for message in messages %}
-            <div class="alert {{ message.tags }}">
-                {{ message }}
+        <main id="main-content">
+            {% if messages %}
+            <div class="container" style="margin-top: 20px;">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+            {% endif %}
 
-        {% block content %}
-        {% endblock %}
+            {% block content %}
+            {% endblock %}
+        </main>
 
         <footer>
             <div class="container">
                 <div style="margin-bottom: 20px;">
                     <h3 style="color: #fff; margin-bottom: 10px;">Assistenza Elettrodomestici Como</h3>
                     <p>📍 Via dei Partigiani, 24, 22100 Como (CO)</p>
-                    <p>📞 <a href="tel:{{ phone_number }}" style="color: #ccc; text-decoration: none;">{{ phone_number
-                            }}</a></p>
+                    <p>📞 <a href="tel:3317167874" style="color: #ccc; text-decoration: none;"
+                            aria-label="Chiamata rapida">3317167874</a></p>
                     <p>⏰ Servizio di pronto intervento 24/7</p>
                 </div>
-                <p style="font-size: 0.8rem; opacity: 0.6;">
+                <p style="font-size: 0.8rem;">
                     &copy; 2026 Assistenza Elettrodomestici Como. Tutti i diritti riservati. |
-                    <a href="{% url 'privacy' %}" style="color: #666;">Privacy Policy</a>
+                    <a href="{% url 'privacy' %}" style="color: #dddddd;">Privacy Policy</a>
                 </p>
             </div>
         </footer>
-        <div id="cookie-banner" class="cookie-banner">
+        <div id="cookie-banner" class="cookie-banner" aria-label="Cookie Policy">
             <p>Utilizziamo i cookie per migliorare la tua esperienza. Continuando a navigare accetti la nostra <a
                     href="{% url 'privacy' %}">Cookie Policy</a>.</p>
             <button id="accept-cookies" class="cookie-btn">Accetto</button>
