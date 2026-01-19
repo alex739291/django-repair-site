@@ -152,7 +152,7 @@ h1 {
 }
 
 .cta-button.orange {
-  background-color: #d35400;
+  background-color: #b33a00 !important;
 }
 
 .cta-button.orange:hover {
@@ -829,7 +829,7 @@ footer {
 }
 
 .cookie-btn {
-  background-color: #d35400;
+  background-color: #b33a00 !important;
   color: white;
   border: none;
   padding: 8px 20px;

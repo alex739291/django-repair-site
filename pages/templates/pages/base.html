@@ -114,7 +114,7 @@
         /* HERO */
         .hero {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url("{% static 'pages/images/hero-bg.avif' %}");
+            url("{% static 'pages/images/hero-bg.avif' %}");
             background-size: cover;
             background-position: center;
             color: white;
@@ -157,7 +157,7 @@
         }
 
         .cta-button.orange {
-            background-color: #d35400;
+            background-color: #b33a00 !important;
         }
 
         .cta-button.orange:hover {
@@ -243,7 +243,7 @@
 
             .hero {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url("{% static 'pages/images/hero-bg.avif' %}");
+                url("{% static 'pages/images/hero-bg.avif' %}");
             }
 
             .main-nav {
@@ -336,6 +336,51 @@
     </noscript>
 
 </head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Assistenza/24 - Assistenza Elettrodomestici Como",
+  "alternateName": "Tecnico Elettrodomestici Como",
+  "image": "https://www.tecnicoelettrodomesticicomo.it/static/pages/images/logo.png",
+  "url": "https://www.tecnicoelettrodomesticicomo.it/",
+  "telephone": "+39 331 716 7874",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via dei Partigiani, 24",
+    "addressLocality": "Como",
+    "postalCode": "22100",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.8038,
+    "longitude": 9.0911
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "areaServed": {
+    "@type": "City",
+    "name": "Como"
+  },
+  "description": "Servizio di riparazione elettrodomestici a Como e provincia attivo 24/7. Assistenza rapida per lavatrici, lavastoviglie, frigoriferi e forni di tutte le marche."
+}
+</script>
 
 <body>
     <div class="container">
@@ -362,8 +407,7 @@
                         <li><a href="#contact">Contatti</a></li>
                     </ul>
                 </nav>
-                <div class="hamburger"
-                    <span></span>
+                <div class="hamburger" <span></span>
                     <span></span>
                     <span></span>
                 </div>
