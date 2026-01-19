@@ -20,14 +20,6 @@
     <meta property="og:image" content="{% block og_image %}{% static 'pages/images/logo.png' %}{% endblock %}">
     <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
     <link rel="canonical" href="https://www.tecnicoelettrodomesticicomo.it{{ request.path }}">
-    <link rel="preload" as="image"
-        href="{% static 'pages/images/hero-bg.avif' %}"
-        media="(max-width: 800px)" fetchpriority="high">
-
-    <link rel="preload" as="image"
-        href="{% static 'pages/images/hero-bg.avif' %}"
-        media="(min-width: 801px)" fetchpriority="high">
-
     <style>
         /* CRITICAL CSS: Global & Reset */
         body {
@@ -122,7 +114,7 @@
         /* HERO */
         .hero {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('/static/pages/images/hero-bg.avif');
+                url("{% static 'pages/images/hero-bg.avif' %}");
             background-size: cover;
             background-position: center;
             color: white;
@@ -251,7 +243,7 @@
 
             .hero {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url('/static/pages/images/hero-bg.avif');
+                    url("{% static 'pages/images/hero-bg.avif' %}");
             }
 
             .main-nav {
@@ -329,6 +321,11 @@
             }
         }
     </style>
+    <link rel="preload" as="image" href="{% static 'pages/images/hero-bg.avif' %}" media="(max-width: 800px)"
+        fetchpriority="high">
+
+    <link rel="preload" as="image" href="{% static 'pages/images/hero-bg.avif' %}" media="(min-width: 801px)"
+        fetchpriority="high">
 
     <link rel="stylesheet" href="{% static 'pages/style.css' %}" media="print" onload="this.media='all'">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style"
@@ -365,7 +362,7 @@
                         <li><a href="#contact">Contatti</a></li>
                     </ul>
                 </nav>
-                <div class="hamburger" aria-label="Menu">
+                <div class="hamburger"
                     <span></span>
                     <span></span>
                     <span></span>

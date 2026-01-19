@@ -20,23 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. АНИМАЦИЯ ПРИ СКРОЛЛЕ ---
-    function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
+    const revealElements = document.querySelectorAll(".reveal");
 
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150;
-
-            if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
             }
-        }
-    }
+        });
+    }, {
+        threshold: 0.15
+    });
 
-    window.addEventListener("scroll", reveal, { passive: true });
-    reveal(); // Запускаем один раз сразу
-
+    revealElements.forEach(el => revealObserver.observe(el));
     // --- 3. COOKIE BANNER ---
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
