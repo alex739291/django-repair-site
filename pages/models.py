@@ -12,13 +12,13 @@ class Service(models.Model):
     
     def __str__(self):
         return self.title
-    
-    def get_absolute_url(self):
-        return reverse('service_detail', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = "Servizio"
         verbose_name_plural = "Servizi"
+    def get_absolute_url(self):
+        # 'service_detail' — это имя (name) пути из твоего файла pages/urls.py
+        return reverse('service_detail', args=[str(self.id)])    
 
 class Order(models.Model):
     # Связываем заказ с конкретной услугой (если услугу удалят, заказ останется)
