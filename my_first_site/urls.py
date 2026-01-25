@@ -22,12 +22,13 @@ from django.contrib.sitemaps.views import sitemap
 from django.views.generic import TemplateView  # Нужно для robots.txt
 
 # Импортируем оба класса карты сайта
-from pages.sitemaps import ServiceSitemap, StaticViewSitemap 
+from pages.sitemaps import ServiceSitemap, StaticViewSitemap, BrandSitemap 
 
 # Объединяем статику и услуги в одну карту
 sitemaps = {
     'static': StaticViewSitemap,
     'services': ServiceSitemap,
+    'brands': BrandSitemap,
 }
 
 urlpatterns = [

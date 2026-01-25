@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from .models import Service
+from .models import Service, Brand
 
 # Карта для статических страниц (Главная)
 class StaticViewSitemap(Sitemap):
@@ -25,4 +25,10 @@ class ServiceSitemap(Sitemap):
         # Берем все услуги из базы данных
         return Service.objects.all()
 
-    # Django автоматически будет искать метод get_absolute_url в модели Service
+class BrandSitemap(Sitemap):
+    protocol = 'https'
+    priority = 0.7
+    changefreq = 'monthly'
+
+    def items(self):
+        return Brand.objects.all()
