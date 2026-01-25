@@ -22,6 +22,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
             <a href="tel:3317167874" class="cta-button orange" aria-label="Chiamata rapida">
                 📞 Chiama Ora
             </a>
+            
             <a href="{% url 'contact' %}" class="cta-button" aria-label="Compila modulo">
                 📝 Compila Modulo
             </a>
@@ -43,7 +44,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
                         <h3>{{ service.title }}</h3>
                         <p class="service-price">{{ service.price }}</p>
                     </div>
-                    <a href="{% url 'service_detail' service.pk %}" class="cta-button"
+                    <a href="{{ service.get_absolute_url }}" class="cta-button"
                         aria-label="Dettagli">Dettagli</a>
                 </div>
             </div>
@@ -86,7 +87,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
                 {% for brand in brands %}
                 <div class="swiper-slide brand-slide">
                     <a href="{% url 'brand_detail' brand.slug %}" class="brand-card">
-                        <img src="{{ brand.logo.url }}" alt="{{ brand.title }}">
+                        <img src="{{ brand.logo.url }}" alt="{{ brand.title }}" width="200" height="100" loading="lazy">
                     </a>
                 </div>
                 {% empty %}

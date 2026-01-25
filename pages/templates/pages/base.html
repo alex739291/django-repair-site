@@ -232,6 +232,21 @@
             margin-top: 20px;
         }
 
+        .service-card {
+            position: relative;
+            height: 380px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
 
 
         /* MEDIA QUERIES (Critical Only) */
@@ -412,7 +427,6 @@
                     <span></span>
                 </div>
 
-
                 <a href="tel:3317167874" class="cta-button header-phone" aria-label="Chiamata rapida">📞 3317167874</a>
             </div>
         </header>
@@ -446,6 +460,7 @@
                 </p>
             </div>
         </footer>
+
         <div id="cookie-banner" class="cookie-banner" aria-label="Cookie Policy">
             <p>Utilizziamo i cookie per migliorare la tua esperienza. Continuando a navigare accetti la nostra <a
                     href="{% url 'privacy' %}">Cookie Policy</a>.</p>
@@ -453,8 +468,10 @@
         </div>
 
     </div>
+
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script defer src="{% static 'pages/script.js' %}"></script>
+
 
 </body>
 

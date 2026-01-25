@@ -4,6 +4,7 @@ import os
 
 class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nome del servizio")
+    slug = models.SlugField(unique=True, verbose_name="URL", null=True, blank=True)
     description = models.TextField(verbose_name="Descrizione del servizio", blank=True)
     price = models.CharField(max_length=50, verbose_name="Prezzo", default="a partire da 50€")
     image = models.ImageField(upload_to='services/', verbose_name="Immagine del servizio")
@@ -18,7 +19,7 @@ class Service(models.Model):
         verbose_name_plural = "Servizi"
     def get_absolute_url(self):
         # 'service_detail' — это имя (name) пути из твоего файла pages/urls.py
-        return reverse('service_detail', args=[str(self.id)])    
+        return reverse('service_detail', kwargs={'slug': self.slug})    
 
 class Order(models.Model):
     # Связываем заказ с конкретной услугой (если услугу удалят, заказ останется)
