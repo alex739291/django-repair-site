@@ -6,6 +6,7 @@ class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nome del servizio")
     slug = models.SlugField(unique=True, verbose_name="URL", null=True, blank=True)
     description = models.TextField(verbose_name="Descrizione del servizio", blank=True)
+    short_description = models.TextField(blank=True, max_length=200, verbose_name="Descrizione Breve")
     price = models.CharField(max_length=50, verbose_name="Prezzo", default="a partire da 50€")
     image = models.ImageField(upload_to='services/', verbose_name="Immagine del servizio")
     def get_webp_url(self):

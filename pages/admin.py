@@ -16,4 +16,4 @@ class OrderAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     # Автозаполнение поля slug из поля title
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'slug')    
+    list_display = ('title', 'slug', 'short_description')    
