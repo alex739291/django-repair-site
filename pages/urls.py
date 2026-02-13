@@ -10,4 +10,5 @@ urlpatterns = [
     path('privacy/', views.privacy, name='privacy'),
     path('brand/<slug:slug>/', views.brand_detail, name='brand_detail'),
     path('thanks/', views.thanks, name='thanks'),
+    path('about/', views.about, name='about'),
 ]

@@ -1,0 +1,59 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Perché Noi - Il Tuo Tecnico di Fiducia a Como{% endblock %}
+
+{% block description %}Scopri perché scegliere la nostra assistenza elettrodomestici a Como. Interventi rapidi,
+trasparenza e tecnici specializzati multimarca.{% endblock %}
+
+{% block content %}
+<section style="padding: 60px 20px;">
+    <div class="container" style="max-width: 900px;">
+
+        <div class="breadcrumbs" style="margin-bottom: 30px;">
+            <a href="{% url 'home' %}" style="color: #666; text-decoration: none;">Home</a> &rsaquo; <span
+                style="color: #333;">Perché noi</span>
+        </div>
+
+        <h1 style="color: #003366; margin-bottom: 20px; font-size: 2.5rem;">Il Tuo Tecnico di Fiducia per gli
+            Elettrodomestici a Como</h1>
+
+        <div style="font-size: 1.1rem; color: #444; line-height: 1.8;">
+            <p>Sappiamo perfettamente quanto possa essere frustrante la rottura improvvisa di un elettrodomestico. Una
+                lavatrice che si blocca, una lavastoviglie che non scarica o un'asciugatrice che non scalda possono
+                interrompere la routine quotidiana di un'intera famiglia.</p>
+
+            <p>Proprio per questo è nata la nostra realtà: per offrire a Como e nei comuni limitrofi un punto di
+                riferimento rapido, onesto e professionale. Non ci limitiamo a "cambiare pezzi", ma analizziamo il
+                guasto per offrirti la soluzione più conveniente e duratura.</p>
+        </div>
+
+        <h2 style="color: #003366; margin-top: 40px; margin-bottom: 20px;">I Nostri Punti di Forza</h2>
+        <div class="features-grid" style="margin-top: 0;">
+            <div class="feature-item">
+                <div class="feature-icon">🚀</div>
+                <h3>Intervento Rapido</h3>
+                <p>Ripristiniamo il tuo elettrodomestico nel minor tempo possibile, a domicilio.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <h3>Trasparenza Totale</h3>
+                <p>Diagnosi chiara e preventivo senza sorprese prima di procedere.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎓</div>
+                <h3>Competenza</h3>
+                <p>Tecnici aggiornati sulle ultime tecnologie dei principali marchi.</p>
+            </div>
+        </div>
+
+        <div
+            style="background-color: #f9f9f9; padding: 30px; border-radius: 10px; border-left: 5px solid #d35400; margin-top: 40px;">
+            <h3 style="margin-bottom: 15px;">Hai un elettrodomestico che fa i capricci?</h3>
+            <p style="margin-bottom: 20px;">Non aspettare che il problema peggiori. Descrivici il guasto: un nostro
+                tecnico specializzato ti risponderà in tempi brevissimi per fissare un appuntamento.</p>
+            <a href="{% url 'contact' %}" class="cta-button orange">Richiedi un appuntamento</a>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

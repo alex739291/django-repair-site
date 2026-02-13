@@ -43,6 +43,8 @@ class Brand(models.Model):
     logo = models.FileField(upload_to='brands/', verbose_name="Logo del marchio")
     image = models.ImageField(upload_to='brands/', verbose_name="Immagine del marchio")
     description = models.TextField(verbose_name="Descrizione del marchio", blank=True)
+    meta_description = models.CharField(max_length=160, blank=True, verbose_name="Meta Description (SEO)")
+    seo_text = models.TextField(blank=True, verbose_name="Testo SEO (vsc)")
     slug = models.SlugField(unique=True, verbose_name="URL")
     def get_webp_url(self):
         if self.image:

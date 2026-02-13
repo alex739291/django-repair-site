@@ -15,6 +15,10 @@ body {
   padding: 0 15px;
 }
 
+main#main-content {
+  min-height: 60vh;
+}
+
 /* =========================================
    2. ШАПКА (HEADER)
    ========================================= */
@@ -633,7 +637,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.feature-item h4 {
+.feature-item h3 {
   margin: 5px 0;
   color: #333;
   font-size: 1rem;
@@ -668,7 +672,7 @@ h1 {
 
 .price-note {
   font-size: 0.8rem;
-  color: #888;
+  color: #555;
   margin-top: 5px;
   font-style: italic;
 }
@@ -716,7 +720,7 @@ h1 {
 .secure-text {
   text-align: center;
   font-size: 0.8rem;
-  color: #999;
+  color: #555;
   margin-top: 15px;
 }
 
@@ -979,9 +983,44 @@ footer {
 }
 
 /* =========================================
-   12. АДАПТИВНОСТЬ (MEDIA QUERIES)
+   12. BRAND DETAIL STYLES
+   ========================================= */
+.brand-logo-img {
+  display: block;
+  max-width: 250px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.brand-seo-content {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #666;
+  background-color: #fcfcfc;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+/* =========================================
+   13. АДАПТИВНОСТЬ (MEDIA QUERIES)
    ========================================= */
 
+/* --- 1024px --- */
+@media (max-width: 1024px) {
+  .myBrandSwiper {
+    padding: 20px 10px !important;
+  }
+}
+
+/* --- 800px --- */
 @media (max-width: 800px) {
   .hamburger {
     display: flex;
@@ -1023,60 +1062,10 @@ footer {
   }
 }
 
-@media (max-width: 600px) {
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  header .cta-button {
-    display: inline-block;
-    width: 50%;
-    text-align: center;
-    margin-top: 5px;
-  }
-
-  .logo-icon {
-    height: 40px;
-  }
-
-  .main-nav {
-    top: 100%;
-    width: 100%;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-    line-height: 1.2;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .cookie-banner {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .coverage-grid {
-    gap: 30px;
-  }
-
-  .coverage-column {
-    min-width: 100%;
-    text-align: center;
-  }
-
-  .coverage-subtitle {
-    display: inline-block;
-    width: 100%;
-  }
-}
-
+/* --- 768px --- */
 @media (max-width: 768px) {
+
+  /* Service Hero & Content */
   .service-hero {
     height: 180px;
     margin-bottom: 20px;
@@ -1135,48 +1124,86 @@ footer {
   .order-header h3 {
     font-size: 1.2rem;
   }
-}
 
-/* --- СКРЫВАЕМ СТРЕЛКИ НА ТЕЛЕФОНАХ (ОБНОВЛЕНИЕ) --- */
-@media (max-width: 1024px) {
-
-
-  .myBrandSwiper {
-    padding: 20px 10px !important;
+  /* Brand Detail */
+  .brand-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 }
 
-/* --- МОБИЛЬНАЯ ВЕРСИЯ СЛАЙДЕРА (1 Логотип + Стрелки) --- */
+/* --- 640px --- */
 @media (max-width: 640px) {
-
-  /* Уменьшаем отступы, чтобы стрелки были ближе к краям */
   .myBrandSwiper {
     padding: 10px 50px !important;
-    /* 50px для стрелок, остальное для логотипа */
   }
 
-  /* Чуть уменьшаем стрелки, чтобы не были гигантскими на телефоне */
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 22px !important;
   }
 
-  /* Гарантируем, что стрелки видны */
   .swiper-button-next,
   .swiper-button-prev {
     display: flex !important;
   }
 }
 
-/* Адаптив для телефонов */
-@media (max-width: 768px) {
-  .brand-container {
-    grid-template-columns: 1fr;
-    /* Одна колонка */
+/* --- 600px --- */
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  header .cta-button {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .logo-icon {
+    height: 40px;
+  }
+
+  .main-nav {
+    top: 100%;
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .cookie-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .coverage-grid {
     gap: 30px;
+  }
+
+  .coverage-column {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .coverage-subtitle {
+    display: inline-block;
+    width: 100%;
   }
 }
 
+/* --- 576px --- */
 @media (max-width: 576px) {
   .emergency-247 {
     font-size: 0.7rem;

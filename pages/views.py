@@ -27,6 +27,9 @@ def home(request):
     
     return render(request, "pages/index.html", context)
 
+def about(request):
+    return render(request, 'pages/about.html')    
+
 def service_detail(request, slug):
     # Находим услугу по ID (например, Холодильник)
     service = get_object_or_404(Service, slug=slug)

@@ -342,13 +342,8 @@
     <link rel="preload" as="image" href="{% static 'pages/images/hero-bg.avif' %}" media="(min-width: 801px)"
         fetchpriority="high">
 
-    <link rel="stylesheet" href="{% static 'pages/style.css' %}" media="print" onload="this.media='all'">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="{% static 'pages/style.css' %}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    </noscript>
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 </head>
 <script type="application/ld+json">
@@ -417,7 +412,7 @@
                     <ul class="nav-list">
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'home' %}#services">Servizi</a></li>
-                        <li><a href="{% url 'home' %}#why-us">Perché noi</a></li>
+                        <li><a href="{% url 'about' %}">Perché noi</a></li>
                         <li><a href="{% url 'home' %}#brands">Marchi</a></li>
                         <li><a href="{% url 'contact' %}">Contatti</a></li>
                     </ul>
@@ -448,7 +443,7 @@
         <footer>
             <div class="container">
                 <div style="margin-bottom: 20px;">
-                    <h3 style="color: #fff; margin-bottom: 10px;">Assistenza Elettrodomestici Como</h3>
+                    <h2 style="color: #fff; margin-bottom: 10px;">Assistenza Elettrodomestici Como</h3>
                     <p>📍 Via dei Partigiani, 24, 22100 Como (CO)</p>
                     <p>📞 <a href="tel:3317167874" style="color: #ccc; text-decoration: none;"
                             aria-label="Chiamata rapida">3317167874</a></p>
