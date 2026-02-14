@@ -32,7 +32,7 @@ def about(request):
 
 def service_detail(request, slug):
     # Находим услугу по ID (например, Холодильник)
-    service = get_object_or_404(Service, slug=slug)
+    service = get_object_or_404(Service.objects.prefetch_related('brands'), slug=slug)
     
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -51,8 +51,9 @@ def service_detail(request, slug):
             
     else:
         form = OrderForm()
+    related_brands = service.brands.all()    
 
-    return render(request, 'pages/service_detail.html', {'service': service, 'form': form})
+    return render(request, 'pages/service_detail.html', {'service': service, 'form': form, 'brands': related_brands})
 
 def contact_page(request):
     if request.method == 'POST':

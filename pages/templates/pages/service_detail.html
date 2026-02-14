@@ -31,6 +31,24 @@ Whirlpool, Miele, e molti altri marchi. {{ service.price }}. Chiamaci ora! ðŸ‡®ð
             <div class="detail-description">
                 {{ service.description|linebreaks }}
             </div>
+            {% if brands %}
+            <div class="service-brands-section"
+                style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+                <h3 style="color: #003366; margin-bottom: 20px; font-size: 1.4rem;">Marchi trattati per questo servizio:
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                    {% for brand in brands %}
+                    <a href="{{ brand.get_absolute_url }}" title="Assistenza {{ brand.title }}">
+                        <img src="{{ brand.get_webp_logo_url }}" alt="Logo {{ brand.title }}"
+                            style="height: 40px; width: auto; filter: grayscale(100%); transition: all 0.3s;"
+                            onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';"
+                            onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';"
+                            loading="lazy">
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
 
             <div class="features-grid">
                 <div class="feature-item">
