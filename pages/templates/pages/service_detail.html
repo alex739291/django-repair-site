@@ -1,10 +1,10 @@
 {% extends 'pages/base.html' %}
 {% block title %}Assistenza {{ service.title }} a Como - AlexRepair{% endblock %}
 {% block description %}Assistenza {{ service.title }} a Como: riparazioni rapide 24/7 con garanzia per Akai, Bosch,
-Samsung, Whirlpool, Miele, e molti altri marchi. {{ service.price }}. Chiamaci ora! 🇮🇹{% endblock %}
+Samsung, Whirlpool, Miele, e molti altri marchi. Chiamaci ora! 🇮🇹{% endblock %}
 {% block og_title %}Assistenza {{ service.title }} a Como{% endblock %}
 {% block og_desc %}Assistenza {{ service.title }} a Como: riparazioni rapide 24/7 con garanzia per Akai, Bosch, Samsung,
-Whirlpool, Miele, e molti altri marchi. {{ service.price }}. Chiamaci ora! 🇮🇹{% endblock %}
+Whirlpool, Miele, e molti altri marchi. Chiamaci ora! 🇮🇹{% endblock %}
 {% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
 {% block og_image %}{{ request.scheme }}://{{ request.get_host }}{{ service.image.url }}{% endblock %}
 {% block content %}
@@ -68,17 +68,26 @@ Whirlpool, Miele, e molti altri marchi. {{ service.price }}. Chiamaci ora! 🇮�
                 </div>
             </div>
 
-            <div class="price-highlight">
-                <span class="price-label">Prezzo stimato:</span>
-                <span class="price-value">{{ service.price }}</span>
-                <p class="price-note">*Il prezzo finale dipende dal tipo di guasto</p>
-            </div>
+
 
             <div class="mini-faq">
                 <h3>Domande Frequenti</h3>
                 <details>
+                    <summary>Quanto costa l'uscita del tecnico?</summary>
+                    <p>Senza riparazione, il costo dell'uscita del tecnico è di 50 euro; se si procede con la
+                        riparazione, l'uscita è gratuita.</p>
+                </details>
+                <details>
                     <summary>Quanto tempo ci vuole?</summary>
-                    <p>Solitamente risolviamo il problema in 1 ora al primo intervento.</p>
+                    <p>La durata dell'intervento di riparazione del tuo elettrodomestico può variare significativamente
+                        in base alla complessità del problema e alla disponibilità delle parti di ricambio necessarie.
+                        Per riparazioni semplici, come la sostituzione di una cinghia o di un interruttore, i nostri
+                        tecnici sono in grado di completare il lavoro in genere entro un'ora. Tuttavia, per riparazioni
+                        più complesse, il tempo necessario può estendersi fino a diversi giorni. Inoltre, se è richiesto
+                        l'ordine di parti specifiche, questo potrebbe prolungare ulteriormente il processo di
+                        riparazione. Ti assicuriamo che il nostro team lavorerà con efficienza per ridurre al minimo il
+                        disagio e ripristinare la piena funzionalità del tuo elettrodomestico nel minor tempo possibile.
+                    </p>
                 </details>
                 <details>
                     <summary>Intervenite su tutte le marche?</summary>

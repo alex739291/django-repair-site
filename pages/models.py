@@ -7,7 +7,7 @@ class Service(models.Model):
     slug = models.SlugField(unique=True, verbose_name="URL", null=True, blank=True)
     description = models.TextField(verbose_name="Descrizione del servizio", blank=True)
     short_description = models.TextField(blank=True, max_length=200, verbose_name="Descrizione Breve")
-    price = models.CharField(max_length=50, verbose_name="Prezzo", default="a partire da 50€")
+
     image = models.ImageField(upload_to='services/', verbose_name="Immagine del servizio")
     brands = models.ManyToManyField('Brand', related_name="services", blank=True, verbose_name="Marchi associati")
     def get_webp_url(self):

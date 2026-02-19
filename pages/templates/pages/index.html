@@ -43,7 +43,7 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
                     <div class="card-top">
                         <h3>{{ service.title }}</h3>
                         <p class="service-preview">{{ service.short_description }}</p>
-                        <p class="service-price">{{ service.price }}</p>
+
                     </div>
                     <a href="{{ service.get_absolute_url }}" class="cta-button" aria-label="Dettagli">Dettagli</a>
                 </div>
@@ -101,6 +101,28 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
     </div>
 </section>
+<section id="info-fee" class="reveal" style="padding: 60px 0; background-color: #fff;">
+    <div class="container">
+        <h2 style="color: #003366; margin-bottom: 30px; text-align: center; text-transform: uppercase;">
+            SE NON SI PROCEDE ALLA RIPARAZIONE DELL'ELETTRODOMESTICO, IL COSTO PER L'USCITA DEL TECNICO È DI 50€
+        </h2>
+        <div
+            style="max-width: 900px; margin: 0 auto; font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+            <p style="margin-bottom: 20px;">
+                Desideriamo informare i nostri clienti che, nell'eventualità in cui una riparazione non venga effettuata
+                durante la visita del nostro tecnico, verrà applicato un costo fisso di 50€ per l'uscita.
+            </p>
+            <p>
+                Questa tariffa è stata stabilita per coprire il tempo e le risorse impiegate dal nostro tecnico per la
+                diagnosi del problema. Comprendiamo l'importanza di mantenere i vostri elettrodomestici in perfetta
+                efficienza e ci impegniamo a fornire una valutazione accurata e consigli professionali su come procedere
+                al meglio, sia che si tratti di riparazione, sostituzione o qualsiasi altra soluzione adeguata alle
+                vostre esigenze.
+            </p>
+        </div>
+    </div>
+</section>
+
 <section id="coverage" class="reveal coverage-section">
     <div class="container">
         <h2 class="coverage-title">Zone di Intervento a Como</h2>
@@ -176,12 +198,17 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
         <details style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer;">
             <summary style="font-weight: bold; color: #333; outline: none;">Quanto costa l'uscita del tecnico?</summary>
-            <p style="margin-top: 10px; color: #666;">L'uscita è gratuita se accetti il preventivo di riparazione.</p>
+            <p style="margin-top: 10px; color: #666;">Senza riparazione, il costo dell'uscita del tecnico è di 50 euro;
+                se si procede con la riparazione, l'uscita è gratuita.</p>
         </details>
 
         <details style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer;">
             <summary style="font-weight: bold; color: #333; outline: none;">Date garanzia sulla riparazione?</summary>
             <p style="margin-top: 10px; color: #666;">Sì, offriamo fino a 12 mesi di garanzia sui pezzi di ricambio.</p>
+        </details>
+        <details style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer;">
+            <summary style="font-weight: bold; color: #333; outline: none;">Quando un elettrodomestico è in garanzia, chi devo chiamare?</summary>
+            <p style="margin-top: 10px; color: #666;">Se l’elettrodomestico è ancora in garanzia, devi rivolgerti al centro assistenza del produttore.</p>
         </details>
     </div>
 </section>
