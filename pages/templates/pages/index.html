@@ -82,21 +82,16 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
     <div class="container">
         <h2 class="brands-title">I Marchi che Ripariamo</h2>
 
-        <div class="swiper myBrandSwiper">
-            <div class="swiper-wrapper">
-                {% for brand in brands %}
-                <div class="swiper-slide brand-slide">
-                    <a href="{% url 'brand_detail' brand.slug %}" class="brand-card">
-                        <img src="{{ brand.logo.url }}" alt="{{ brand.title }}" width="200" height="100" loading="lazy">
-                    </a>
-                </div>
-                {% empty %}
-                <p>Nessun marchio disponibile.</p>
-                {% endfor %}
+        <div class="brands-grid">
+            {% for brand in brands %}
+            <div class="brand-item">
+                <a href="{% url 'brand_detail' brand.slug %}">
+                    <img src="{{ brand.logo.url }}" alt="{{ brand.title }}" loading="lazy">
+                </a>
             </div>
-
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            {% empty %}
+            <p style="grid-column: 1 / -1; text-align: center;">Nessun marchio disponibile.</p>
+            {% endfor %}
         </div>
 
     </div>
@@ -125,9 +120,10 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
 <section id="coverage" class="reveal coverage-section">
     <div class="container">
-        <h2 class="coverage-title">Zone di Intervento a Como</h2>
+        <h2 class="coverage-title">Zone di Intervento a Como e Varese</h2>
         <p class="coverage-description">
-            Il nostro tecnico specializzato garantisce un intervento rapido a domicilio in tutta la città di Como e nei
+            Il nostro tecnico specializzato garantisce un intervento rapido a domicilio in tutta la città di Como,
+            Varese e nei
             comuni della provincia. Arriviamo da te entro 1 ora dalla chiamata!
         </p>
 
@@ -153,6 +149,16 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
                     <li>📍 Lipomo</li>
                     <li>📍 Grandate</li>
                     <li>📍 Casnate con Bernate</li>
+                </ul>
+            </div>
+
+            <div class="coverage-column">
+                <h3 class="coverage-subtitle">🚗 Provincia di Varese</h3>
+                <ul class="coverage-list">
+                    <li>📍 Varese</li>
+                    <li>📍 Busto Arsizio</li>
+                    <li>📍 Gallarate</li>
+                    <li>📍 Saronno</li>
                 </ul>
             </div>
         </div>
@@ -207,8 +213,10 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
             <p style="margin-top: 10px; color: #666;">Sì, offriamo fino a 12 mesi di garanzia sui pezzi di ricambio.</p>
         </details>
         <details style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer;">
-            <summary style="font-weight: bold; color: #333; outline: none;">Quando un elettrodomestico è in garanzia, chi devo chiamare?</summary>
-            <p style="margin-top: 10px; color: #666;">Se l’elettrodomestico è ancora in garanzia, devi rivolgerti al centro assistenza del produttore.</p>
+            <summary style="font-weight: bold; color: #333; outline: none;">Quando un elettrodomestico è in garanzia,
+                chi devo chiamare?</summary>
+            <p style="margin-top: 10px; color: #666;">Se l’elettrodomestico è ancora in garanzia, devi rivolgerti al
+                centro assistenza del produttore.</p>
         </details>
     </div>
 </section>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Service, Order, Brand
+from .models import Service, Order, Brand, Article
 from .forms import OrderForm
 from django.contrib import messages
 import requests
@@ -104,3 +104,11 @@ def brand_detail(request, slug):
 # Страница благодарности
 def thanks(request):
     return render(request, 'pages/thanks.html')
+
+def blog_list(request):
+    articles = Article.objects.all()
+    return render(request, 'pages/blog.html', {'articles': articles})
+
+def article_detail(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    return render(request, 'pages/article_detail.html', {'article': article})

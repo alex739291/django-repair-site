@@ -66,3 +66,23 @@ class Brand(models.Model):
     class Meta:
         verbose_name = "Marchio"
         verbose_name_plural = "Marchi"
+
+class Article(models.Model):
+    title = models.CharField(max_length=150, verbose_name="Titolo")
+    slug = models.SlugField(unique=True, verbose_name="URL")
+    image = models.ImageField(upload_to='blog/', verbose_name="Immagine")
+    short_description = models.TextField(max_length=300, verbose_name="Breve descrizione")
+    content = models.TextField(verbose_name="Contenuto completo")
+    meta_description = models.CharField(max_length=160, blank=True, verbose_name="Meta Description (SEO)")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data di creazione")
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('article_detail', kwargs={'slug': self.slug})
+
+    class Meta:
+        verbose_name = "Articolo"
+        verbose_name_plural = "Articoli"
+        ordering = ['-created_at']

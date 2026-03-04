@@ -66,32 +66,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. СЛАЙДЕР БРЕНДОВ (SWIPER) ---
-    // Проверяем, есть ли слайдер на странице, чтобы избежать ошибок
-    if (document.querySelector(".myBrandSwiper")) {
-        const swiper = new Swiper(".myBrandSwiper", {
-            slidesPerView: 1,     // На мобильном
-            spaceBetween: 20,
-            loop: true,           // Бесконечная прокрутка
+    // --- КНОПКА НАВЕРХ (BACK TO TOP) ---
+    const backToTopBtn = document.getElementById("backToTopBtn");
 
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 1, // Планшет
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 5, // ПК
-                    spaceBetween: 40,
-                },
-            },
+    if (backToTopBtn) {
+        // Появление после 800px скролла (примерно Hero + Services)
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 800) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        // Плавный скролл наверх
+        backToTopBtn.addEventListener("click", (e) => {
+            e.preventDefault(); // Отключаем стандартное поведение
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
         });
     }
 

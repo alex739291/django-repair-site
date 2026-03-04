@@ -1,0 +1,45 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block title %}{{ article.title }} | Blog Assistenza Elettrodomestici{% endblock %}
+{% block description %}{{ article.meta_description }}{% endblock %}
+
+{% block content %}
+<section class="detail-page-container">
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">Home</a> &rsaquo;
+        <a href="{% url 'blog_list' %}">Blog</a> &rsaquo;
+        <span>{{ article.title }}</span>
+    </div>
+
+    <h1 class="detail-title" style="margin-top: 20px;">{{ article.title }}</h1>
+    <p style="text-align: center; color: #777; margin-bottom: 30px; font-style: italic;">
+        Pubblicato il: {{ article.created_at|date:"d M Y" }}
+    </p>
+
+    {% if article.image %}
+    <img src="{{ article.image.url }}" alt="{{ article.title }}" class="detail-image"
+        style="max-width: 100%; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+    {% endif %}
+
+    <div class="detail-description" style="margin-bottom: 60px;">
+        {{ article.content|safe }}
+    </div>
+
+    <div class="action-area"
+        style="text-align: center; padding: 40px 20px; background-color: #f0f7fd; border-left: 5px solid #003366; border-radius: 10px;">
+        <h3 style="color: #003366; margin-bottom: 15px; font-size: 1.5rem;">Non hai trovato la soluzione? Affidati ai
+            professionisti!</h3>
+        <p style="color: #555; margin-bottom: 25px; font-size: 1.1rem;">
+            Se il problema persiste o preferisci l'intervento di un esperto, i nostri tecnici specializzati garantiscono
+            un'uscita rapida in provincia di Como e Varese.
+        </p>
+        <a href="https://wa.me/39{{ phone_number }}?text=Ciao,%20ho%20letto%20il%20vostro%20articolo%20e%20ho%20bisogno%20di%20assistenza%20per%20un%20elettrodomestico."
+            target="_blank" rel="noopener noreferrer" class="cta-button orange"
+            style="font-size: 1.1rem; padding: 12px 30px;">
+            Contattaci su WhatsApp
+        </a>
+    </div>
+
+</section>
+{% endblock %}

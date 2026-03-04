@@ -1,0 +1,33 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block title %}Blog | Assistenza Elettrodomestici Como e Varese{% endblock %}
+{% block description %}Il nostro Blog: Consigli, guide e novità dal mondo dell'assistenza elettrodomestici a Como e
+Varese.{% endblock %}
+
+{% block content %}
+<section class="brands-section">
+    <div class="container">
+        <h1 class="brands-title" style="margin-bottom: 50px;">Il nostro Blog: Consigli e Guide</h1>
+
+        <div class="services-grid">
+            {% for article in articles %}
+            <div class="service-card reveal" {% if article.image %}style="background-image: url('{{ article.image.url }}');" {% endif %}>
+                <div class="overlay"></div>
+                <div class="card-content">
+                    <div class="card-top">
+                        <h3>{{ article.title }}</h3>
+                        <p class="service-preview">{{ article.short_description }}</p>
+                    </div>
+                    <a href="{% url 'article_detail' article.slug %}" class="cta-button" aria-label="Leggi di più">Leggi
+                        di più</a>
+                </div>
+            </div>
+            {% empty %}
+            <p style="grid-column: 1 / -1; text-align: center; padding: 40px; font-size: 1.2rem; color: #555;">Al
+                momento non ci sono articoli.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

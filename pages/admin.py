@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, Service, Brand  # Импортируем обе модели
+from .models import Order, Service, Brand, Article  # Импортируем обе модели
 
 # 1. Просто регистрируем Услуги (как и было)
 
@@ -22,3 +22,8 @@ class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_display = ('title', 'slug', 'short_description')   
     filter_horizontal = ('brands',) 
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at')
+    prepopulated_fields = {'slug': ('title',)}
