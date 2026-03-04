@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from .models import Service, Brand
+from .models import Service, Brand, Article
 
 # Карта для статических страниц (Главная)
 class StaticViewSitemap(Sitemap):
@@ -32,3 +32,11 @@ class BrandSitemap(Sitemap):
 
     def items(self):
         return Brand.objects.all()
+
+class ArticleSitemap(Sitemap):
+    protocol = 'https'
+    priority = 0.6
+    changefreq = 'weekly'
+
+    def items(self):
+        return Article.objects.all()
