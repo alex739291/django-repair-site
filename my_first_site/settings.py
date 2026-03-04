@@ -25,6 +25,11 @@ SECRET_KEY = 'django-insecure-d9)$+bcb%_$w*8jn!$8$sdi-su@ml@t0rxxam8i&p+857(b%2@
 # SECURITY WARNING: don't run with debug turned on in production!
 if '/home/sashaFirsthProj' in str(BASE_DIR):
     DEBUG = False  # Мы на сервере PythonAnywhere — выключаем отладку
+    # Настройки безопасности для сервера
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 else:
     DEBUG = True
 
