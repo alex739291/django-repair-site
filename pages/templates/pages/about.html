@@ -1,59 +1,61 @@
 {% extends 'pages/base.html' %}
-
-{% block title %}Perché Noi - Il Tuo Tecnico di Fiducia a Como{% endblock %}
-
-{% block description %}Scopri perché scegliere la nostra assistenza elettrodomestici a Como. Interventi rapidi,
-trasparenza e tecnici specializzati multimarca.{% endblock %}
-
+{% load static %}
+{% block title %}Chi Siamo - Assistenza Elettrodomestici{% endblock %}
 {% block content %}
-<section style="padding: 60px 20px;">
-    <div class="container" style="max-width: 900px;">
 
-        <div class="breadcrumbs" style="margin-bottom: 30px;">
-            <a href="{% url 'home' %}" style="color: #666; text-decoration: none;">Home</a> &rsaquo; <span
-                style="color: #333;">Perché noi</span>
+<section class="service-hero" style="background: linear-gradient(135deg, #003366, #00509e);">
+    <div class="container hero-text-container">
+        <h1 class="service-title reveal">Chi Siamo</h1>
+        <p class="service-subtitle reveal">Specialisti nella riparazione di elettrodomestici multimarca</p>
+    </div>
+</section>
+
+<div class="container detail-page-container">
+    <div class="content-wrapper overlap-wrapper" style="flex-direction: column;">
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 50px;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: #003366; margin-top: 0;">La Nostra Esperienza al Tuo Servizio</h2>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #555;">Siamo un team di tecnici specializzati con
+                    anni di esperienza nella riparazione di grandi elettrodomestici. Il nostro obiettivo non è solo
+                    aggiustare una lavatrice o un frigorifero, ma offrirti un servizio onesto, rapido e senza sorprese
+                    sul prezzo.</p>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #555;">Conosciamo il disagio di avere un
+                    elettrodomestico guasto in casa, per questo interveniamo tempestivamente portando con noi i ricambi
+                    originali più comuni per risolvere il problema al primo colpo.</p>
+            </div>
+            <div style="flex: 1; min-width: 300px; display: flex; align-items: stretch; justify-content: center;">
+                <img src="{% static 'pages/images/hero-bg.avif' %}" alt="Assistenza e riparazione elettrodomestici a Como"
+                    style="width: 100%; object-fit: cover; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); min-height: 350px;">
+            </div>
         </div>
 
-        <h1 style="color: #003366; margin-bottom: 20px; font-size: 2.5rem;">Il Tuo Tecnico di Fiducia per gli
-            Elettrodomestici a Como e Varese</h1>
-
-        <div style="font-size: 1.1rem; color: #444; line-height: 1.8;">
-            <p>Sappiamo perfettamente quanto possa essere frustrante la rottura improvvisa di un elettrodomestico. Una
-                lavatrice che si blocca, una lavastoviglie che non scarica o un'asciugatrice che non scalda possono
-                interrompere la routine quotidiana di un'intera famiglia.</p>
-
-            <p>Proprio per questo è nata la nostra realtà: per offrire a Como e nella provincia di Varese un punto di
-                riferimento rapido, onesto e professionale. Non ci limitiamo a "cambiare pezzi", ma analizziamo il
-                guasto per offrirti la soluzione più conveniente e duratura.</p>
-        </div>
-
-        <h2 style="color: #003366; margin-top: 40px; margin-bottom: 20px;">I Nostri Punti di Forza</h2>
-        <div class="features-grid" style="margin-top: 0;">
+        <h2 style="color: #003366; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px;">Perché
+            Sceglierci?</h2>
+        <div class="features-grid">
             <div class="feature-item">
-                <div class="feature-icon">🚀</div>
-                <h3>Intervento Rapido</h3>
-                <p>Ripristiniamo il tuo elettrodomestico nel minor tempo possibile, a domicilio.</p>
+                <div class="feature-icon">⏱️</div>
+                <h3>Intervento in 24h</h3>
+                <p>Sappiamo che il tempo è prezioso. Garantiamo un'uscita rapida per non lasciarti nel disagio.</p>
             </div>
             <div class="feature-item">
                 <div class="feature-icon">🔍</div>
-                <h3>Trasparenza Totale</h3>
-                <p>Diagnosi chiara e preventivo senza sorprese prima di procedere.</p>
+                <h3>Preventivi Trasparenti</h3>
+                <p>Nessuna spesa nascosta. Ti comunichiamo il costo della riparazione prima di iniziare il lavoro.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon">🎓</div>
-                <h3>Competenza</h3>
-                <p>Tecnici aggiornati sulle ultime tecnologie dei principali marchi.</p>
+                <div class="feature-icon">🛡️</div>
+                <h3>Garanzia sui Ricambi</h3>
+                <p>Utilizziamo solo pezzi di ricambio originali o compatibili di alta qualità, coperti da garanzia.</p>
             </div>
         </div>
 
-        <div
-            style="background-color: #f9f9f9; padding: 30px; border-radius: 10px; border-left: 5px solid #d35400; margin-top: 40px;">
-            <h3 style="margin-bottom: 15px;">Hai un elettrodomestico che fa i capricci?</h3>
-            <p style="margin-bottom: 20px;">Non aspettare che il problema peggiori. Descrivici il guasto: un nostro
-                tecnico specializzato ti risponderà in tempi brevissimi per fissare un appuntamento.</p>
-            <a href="{% url 'contact' %}" class="cta-button orange">Richiedi un appuntamento</a>
+        <div style="text-align: center; margin-top: 50px; padding: 40px; background: #eef5fc; border-radius: 15px;">
+            <h3 style="margin-top: 0; color: #003366;">Hai bisogno di assistenza?</h3>
+            <p style="margin-bottom: 25px;">Non aspettare che il problema peggiori. Parla direttamente con un nostro
+                tecnico.</p>
+            <a href="{% url 'contact' %}" class="cta-button">Richiedi un Intervento</a>
         </div>
-
     </div>
-</section>
+</div>
+
 {% endblock %}

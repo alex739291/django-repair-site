@@ -137,22 +137,24 @@ h1 {
 .btn-ordina,
 .card-btn {
   display: inline-block;
-  background-color: #003366;
   color: white !important;
   padding: 10px 25px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
   text-align: center;
+  cursor: pointer;
+  background: linear-gradient(135deg, #d35400, #e67e22);
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta-button:hover,
 .btn-ordina:hover,
 .card-btn:hover {
-  background-color: #002244;
+  background: linear-gradient(135deg, #c34900, #d35400);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(211, 84, 0, 0.3);
 }
 
 .cta-button.orange {
@@ -532,15 +534,25 @@ h1 {
 /* === НОВАЯ СТРАНИЦА УСЛУГИ === */
 .service-hero {
   position: relative;
-  height: 220px;
-  background-color: #003366;
+  height: 350px; /* Увеличена высота для красивого фона */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0; /* Убрали нижний отступ для эффекта наложения */
+  border-radius: 0 0 40px 40px; /* Плавные скругления внизу */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.overlap-wrapper {
+  margin-top: -100px; /* Контент наезжает на шапку */
+  position: relative;
+  z-index: 10;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
 }
 
 .hero-text-container {
@@ -669,14 +681,15 @@ h1 {
   top: 100px;
   background: white;
   padding: 0;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  border: 1px solid #f0f0f0;
+  border: none;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
 }
 
 .order-header {
-  background: #003366;
+  background: linear-gradient(135deg, #003366, #00509e);
+  border-radius: 15px 15px 0 0;
   color: white;
   padding: 20px;
   text-align: center;
@@ -1054,8 +1067,13 @@ footer {
 
   /* Service Hero & Content */
   .service-hero {
-    height: 180px;
-    margin-bottom: 20px;
+    height: 280px;
+    border-radius: 0 0 20px 20px;
+  }
+  .overlap-wrapper {
+    margin-top: -60px;
+    padding: 20px;
+    border-radius: 15px;
   }
 
   .service-title {

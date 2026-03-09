@@ -1,0 +1,57 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block title %}Assistenza Elettrodomestici a {{ city.name }} - Riparazione Rapida{% endblock %}
+{% block description %}Assistenza Elettrodomestici a {{ city.name }}. Intervento rapido e ricambi originali. Chiama
+ora!{% endblock %}
+
+{% block content %}
+<section class="city-hero" style="background-color: #003366; color: white; padding: 60px 0; text-align: center;">
+    <div class="container">
+        <h1 style="color: white; margin-bottom: 15px;">Assistenza Elettrodomestici a {{ city.name }}</h1>
+        <p style="font-size: 1.2rem; margin-top: 15px; color: #eee;">Riparazione rapida e garantita per tutte le
+            principali marche.</p>
+    </div>
+</section>
+
+<div class="container detail-page-container" style="margin-top: 40px; margin-bottom: 60px;">
+    <div class="breadcrumbs" style="margin-bottom: 30px;">
+        <a href="{% url 'home' %}">Home</a> &rsaquo; <span>{{ city.name }}</span>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 50px;">
+        <div style="flex: 1; min-width: 300px;">
+            <div class="detail-description">
+                {{ city.description|safe|linebreaks }}
+            </div>
+        </div>
+        {% if city.map_iframe %}
+        <div style="flex: 1; min-width: 300px;">
+            <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); height: 100%;">
+                {{ city.map_iframe|safe }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <h2 class="section-title" style="text-align: center; margin-bottom: 30px; color: #003366;">I Nostri Servizi a {{ city.name }}</h2>
+    <div class="services-grid">
+        {% for service in city.services.all %}
+        <div class="service-card reveal"
+            style="background-image: url('{% if service.image %}{{ service.get_webp_url }}{% endif %}');">
+            <div class="overlay"></div>
+            <div class="card-content">
+                <div class="card-top">
+                    <h3>{{ service.title }}</h3>
+                    <p class="service-preview">{{ service.short_description }}</p>
+                </div>
+                <a href="{% url 'city_service_detail' city.slug service.slug %}" class="cta-button"
+                    aria-label="Dettagli">Dettagli</a>
+            </div>
+        </div>
+        {% empty %}
+        <p style="text-align: center; grid-column: 1 / -1;">Nessun servizio disponibile al momento per questa città.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

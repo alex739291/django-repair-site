@@ -2,6 +2,19 @@ from django.db import models
 from django.urls import reverse
 import os
 
+class City(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Nome della città")
+    slug = models.SlugField(unique=True, verbose_name="URL")
+    map_iframe = models.TextField(blank=True, verbose_name="Mappa Google (iframe)")
+    description = models.TextField(blank=True, verbose_name="Descrizione SEO")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Città"
+        verbose_name_plural = "Città"
+
 class Service(models.Model):
     title = models.CharField(max_length=100, verbose_name="Nome del servizio")
     slug = models.SlugField(unique=True, verbose_name="URL", null=True, blank=True)
@@ -10,6 +23,7 @@ class Service(models.Model):
 
     image = models.ImageField(upload_to='services/', verbose_name="Immagine del servizio")
     brands = models.ManyToManyField('Brand', related_name="services", blank=True, verbose_name="Marchi associati")
+    cities = models.ManyToManyField(City, related_name='services', blank=True, verbose_name="Città servite")
     def get_webp_url(self):
         return os.path.splitext(self.image.url)[0] + '.webp'
     
@@ -75,6 +89,7 @@ class Article(models.Model):
     content = models.TextField(verbose_name="Contenuto completo")
     meta_description = models.CharField(max_length=160, blank=True, verbose_name="Meta Description (SEO)")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Data di creazione")
+    related_service = models.ForeignKey('Service', on_delete=models.SET_NULL, null=True, blank=True, related_name='articles', verbose_name="Servizio correlato")
 
     def __str__(self):
         return self.title

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Service, Order, Brand, Article
+from .models import Service, Order, Brand, Article, City
 from .forms import OrderForm
 from django.contrib import messages
 import requests
@@ -20,9 +20,11 @@ def home(request):
     
     services = Service.objects.all()
     brands = Brand.objects.all()
+    cities = City.objects.all()
     context = {
         "services": services,
-        "brands": brands
+        "brands": brands,
+        "cities": cities
     }
     
     return render(request, "pages/index.html", context)
@@ -52,8 +54,9 @@ def service_detail(request, slug):
     else:
         form = OrderForm()
     related_brands = service.brands.all()    
+    related_articles = service.articles.all()[:3]
 
-    return render(request, 'pages/service_detail.html', {'service': service, 'form': form, 'brands': related_brands})
+    return render(request, 'pages/service_detail.html', {'service': service, 'form': form, 'brands': related_brands, 'related_articles': related_articles})
 
 def contact_page(request):
     if request.method == 'POST':
@@ -112,3 +115,29 @@ def blog_list(request):
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
     return render(request, 'pages/article_detail.html', {'article': article})
+
+def city_detail(request, slug):
+    city = get_object_or_404(City, slug=slug)
+    return render(request, 'pages/city_detail.html', {'city': city})
+
+def city_service_detail(request, city_slug, service_slug):
+    city = get_object_or_404(City, slug=city_slug)
+    service = get_object_or_404(Service.objects.prefetch_related('brands'), slug=service_slug)
+    
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+            message_text = f"🔥 Nuovo contatto da {city.name} per {service.title}!\n👤 Nome: {order.name}\n📞 Tel: {order.phone}"
+
+            send_telegram(message_text)
+            messages.success(request, 'Grazie! La tua richiesta è stata inviata. Ti richiameremo a breve.')
+            return redirect('thanks')
+            
+    else:
+        form = OrderForm()
+        
+    related_brands = service.brands.all()    
+    related_articles = service.articles.all()[:3]
+
+    return render(request, 'pages/city_service_detail.html', {'city': city, 'service': service, 'form': form, 'brands': related_brands, 'related_articles': related_articles})

@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Order, Service, Brand, Article  # Импортируем обе модели
-
-# 1. Просто регистрируем Услуги (как и было)
+from .models import Order, Service, Brand, Article, City    
+admin.site.register(City)
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):

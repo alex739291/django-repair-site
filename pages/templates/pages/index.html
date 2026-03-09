@@ -3,7 +3,8 @@
 
 {% block title %}Assistenza Elettrodomestici Como e Varese - Tecnico a domicilio{% endblock %}
 
-{% block description %}Il miglior servizio di assistenza a Como e Varese. Assistenza rapida per lavatrici, frigoriferi, forni,
+{% block description %}Il miglior servizio di assistenza a Como e Varese. Assistenza rapida per lavatrici, frigoriferi,
+forni,
 asciugatrici.
 Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
@@ -120,47 +121,20 @@ Preventivo gratuito e garanzia sui ricambi. Chiama ora!{% endblock %}
 
 <section id="coverage" class="reveal coverage-section">
     <div class="container">
-        <h2 class="coverage-title">Zone di Intervento a Como e Varese</h2>
-        <p class="coverage-description">
-            Il nostro tecnico specializzato garantisce un intervento rapido a domicilio in tutta la città di Como,
-            Varese e nei
-            comuni della provincia. Arriviamo da te entro 1 ora dalla chiamata!
-        </p>
-
+        <h2 class="coverage-title">Le Nostre Zone di Intervento</h2>
+        <p class="coverage-description">Interveniamo rapidamente nelle seguenti province e comuni limitrofi.</p>
         <div class="coverage-grid">
+            {% for city in cities %}
             <div class="coverage-column">
-                <h3 class="coverage-subtitle">🏙️ Quartieri di Como</h3>
-                <ul class="coverage-list">
-                    <li>📍 Centro Città</li>
-                    <li>📍 Tavernola</li>
-                    <li>📍 Sagnino</li>
-                    <li>📍 Ponte Chiasso</li>
-                    <li>📍 Lora</li>
-                    <li>📍 Monte Olimpino</li>
-                </ul>
+                <h3 class="coverage-subtitle"><a href="{% url 'city_detail' city.slug %}"
+                        style="color: inherit; text-decoration: none;">{{ city.name }}</a></h3>
+                {% if city.map_iframe %}
+                <div style="margin-top: 15px; border-radius: 8px; overflow: hidden;">
+                    {{ city.map_iframe|safe }}
+                </div>
+                {% endif %}
             </div>
-
-            <div class="coverage-column">
-                <h3 class="coverage-subtitle">🚗 Comuni Limitrofi</h3>
-                <ul class="coverage-list">
-                    <li>📍 Cernobbio</li>
-                    <li>📍 Brunate</li>
-                    <li>📍 San Fermo della Battaglia</li>
-                    <li>📍 Lipomo</li>
-                    <li>📍 Grandate</li>
-                    <li>📍 Casnate con Bernate</li>
-                </ul>
-            </div>
-
-            <div class="coverage-column">
-                <h3 class="coverage-subtitle">🚗 Provincia di Varese</h3>
-                <ul class="coverage-list">
-                    <li>📍 Varese</li>
-                    <li>📍 Busto Arsizio</li>
-                    <li>📍 Gallarate</li>
-                    <li>📍 Saronno</li>
-                </ul>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

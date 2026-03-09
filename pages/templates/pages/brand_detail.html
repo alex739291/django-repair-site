@@ -37,6 +37,24 @@ specializzati e ricambi originali.{% endblock %}
         </div>
     </div>
 
+    {% if brand.services.exists %}
+    <h2 style="color: #003366; margin-top: 50px; text-align: center;">Servizi di riparazione per {{ brand.title }}</h2>
+    <div class="services-grid" style="margin-top: 30px;">
+        {% for service in brand.services.all %}
+        <div class="service-card" style="background-image: url('{{ service.get_webp_url }}');">
+            <div class="overlay"></div>
+            <div class="card-content">
+                <div class="card-top">
+                    <h3>{{ service.title }} {{ brand.title }}</h3>
+                    <p class="service-preview">{{ service.short_description }}</p>
+                </div>
+                <a href="{{ service.get_absolute_url }}" class="cta-button" aria-label="Dettagli">Scopri il servizio</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     {% if brand.seo_text %}
     <div class="brand-seo-content">
         {{ brand.seo_text|linebreaks }}

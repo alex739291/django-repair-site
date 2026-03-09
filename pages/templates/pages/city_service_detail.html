@@ -1,0 +1,158 @@
+{% extends 'pages/base.html' %}
+{% block title %}Assistenza {{ service.title }} a {{ city.name }} - AlexRepair{% endblock %}
+{% block description %}Assistenza {{ service.title }} a {{ city.name }}: riparazioni rapide 24/7 con garanzia per Akai,
+Bosch,
+Samsung, Whirlpool, Miele, e molti altri marchi. Chiamaci ora! 🇮🇹{% endblock %}
+{% block og_title %}Assistenza {{ service.title }} a {{ city.name }}{% endblock %}
+{% block og_desc %}Assistenza {{ service.title }} a {{ city.name }}: riparazioni rapide 24/7 con garanzia per Akai,
+Bosch, Samsung,
+Whirlpool, Miele, e molti altri marchi. Chiamaci ora! 🇮🇹{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{{ service.image.url }}{% endblock %}
+{% block content %}
+
+<section class="service-hero">
+    <div class="overlay"></div>
+    <div class="container hero-text-container">
+        <h1 class="service-title reveal">{{ service.title }} a {{ city.name }}</h1>
+        <p class="service-subtitle reveal">Assistenza tecnica rapida e garantita a {{ city.name }} e dintorni</p>
+    </div>
+</section>
+
+<div class="container detail-page-container">
+
+    <div class="breadcrumbs">
+        <a href="{% url 'home' %}">Home</a> &rsaquo; <a href="{% url 'city_detail' city.slug %}">{{ city.name }}</a>
+        &rsaquo; <span>{{ service.title }}</span>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="service-info">
+            <h2 class="detail-heading">Assistenza {{ service.title }} a {{ city.name }}: Perché conviene?</h2>
+
+            <div class="detail-description">
+                {{ service.description|linebreaks }}
+            </div>
+            {% if brands %}
+            <div class="service-brands-section"
+                style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+                <h3 style="color: #003366; margin-bottom: 20px; font-size: 1.4rem;">Marchi trattati per questo servizio:
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                    {% for brand in brands %}
+                    <a href="{{ brand.get_absolute_url }}" title="Assistenza {{ brand.title }} a {{ city.name }}">
+                        <img src="{{ brand.get_webp_logo_url }}" alt="Logo {{ brand.title }}"
+                            style="height: 40px; width: auto; filter: grayscale(100%); transition: all 0.3s;"
+                            onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';"
+                            onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';"
+                            loading="lazy">
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Garanzia 12 Mesi</h3>
+                    <p>Su ricambi e lavoro</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Ricambi Originali</h3>
+                    <p>Solo pezzi certificati</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Uscita Rapida</h3>
+                    <p>Anche in giornata</p>
+                </div>
+            </div>
+
+            {% if related_articles %}
+            <h2 class="detail-heading" style="margin-top: 50px;">Guide e articoli utili</h2>
+            <div class="features-grid">
+                {% for article in related_articles %}
+                <div class="feature-item" style="text-align: left; padding: 20px;">
+                    <h3 style="margin-top: 0; font-size: 1.1rem; line-height: 1.3;">
+                        <a href="{{ article.get_absolute_url }}" style="color: #003366; text-decoration: none;">{{
+                            article.title }}</a>
+                    </h3>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">{{ article.short_description|truncatewords:15 }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="mini-faq">
+                <h3>Domande Frequenti</h3>
+                <details>
+                    <summary>Quanto costa l'uscita del tecnico a {{ city.name }}?</summary>
+                    <p>Senza riparazione, il costo dell'uscita del tecnico è di 50 euro; se si procede con la
+                        riparazione, l'uscita è gratuita.</p>
+                </details>
+                <details>
+                    <summary>Quanto tempo ci vuole?</summary>
+                    <p>La durata dell'intervento di riparazione del tuo elettrodomestico può variare significativamente
+                        in base alla complessità del problema e alla disponibilità delle parti di ricambio necessarie.
+                        Per riparazioni semplici, come la sostituzione di una cinghia o di un interruttore, i nostri
+                        tecnici sono in grado di completare il lavoro in genere entro un'ora. Tuttavia, per riparazioni
+                        più complesse, il tempo necessario può estendersi fino a diversi giorni. Inoltre, se è richiesto
+                        l'ordine di parti specifiche, questo potrebbe prolungare ulteriormente il processo di
+                        riparazione. Ti assicuriamo che il nostro team lavorerà con efficienza per ridurre al minimo il
+                        disagio e ripristinare la piena funzionalità del tuo elettrodomestico nel minor tempo possibile.
+                    </p>
+                </details>
+                <details>
+                    <summary>Intervenite su tutte le marche?</summary>
+                    <p>Sì, i nostri tecnici sono formati per riparare tutti i principali brand.</p>
+                </details>
+            </div>
+        </div>
+
+        <div class="service-sidebar">
+            <div class="order-box sticky-box">
+                <div class="order-header">
+                    <h3>Richiedi Intervento</h3>
+                    <p>Ti richiamiamo in 15 min!</p>
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    ✅ {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+
+                <form method="post" class="detail-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Il tuo Nome</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        {{ form.phone }}
+                    </div>
+
+                    <button type="submit" class="cta-button orange full-width">
+                        Prenota Ora
+                    </button>
+
+                    <p class="secure-text">🔒 I tuoi dati sono al sicuro</p>
+                </form>
+
+                <div class="call-box-mobile">
+                    <p>Preferisci chiamare?</p>
+                    <a href="tel:3317167874" class="phone-link-big" aria-label="Chiamata rapida">📞 3317167874</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
