@@ -335,6 +335,18 @@
                 padding: 3px 8px;
             }
         }
+
+        /* FOOTER ZONE LINKS */
+        .footer-zone-link {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-zone-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
     </style>
     <link rel="preload" as="image" href="{% static 'pages/images/hero-bg.avif' %}" media="(max-width: 800px)"
         fetchpriority="high">
@@ -452,6 +464,20 @@
                                 aria-label="Chiamata rapida">3317167874</a></p>
                         <p>⏰ Servizio di pronto intervento 24/7</p>
                 </div>
+
+                <div style="margin-bottom: 20px; border-top: 1px solid #444; padding-top: 20px;">
+                    <h4 style="font-size: 1.1rem; margin-bottom: 10px; color: #fff;">Zone Coperte</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: #aaa;">
+                        <a href="{% url 'city_detail' 'como' %}" class="footer-zone-link">Como</a>,
+                        <a href="{% url 'city_detail' 'cantu' %}" class="footer-zone-link">Cantù</a>,
+                        <a href="{% url 'city_detail' 'erba' %}" class="footer-zone-link">Erba</a>,
+                        <a href="{% url 'city_detail' 'varese' %}" class="footer-zone-link">Varese</a>,
+                        <a href="{% url 'city_detail' 'gallarate' %}" class="footer-zone-link">Gallarate</a>,
+                        <a href="{% url 'city_detail' 'busto-arsizio' %}" class="footer-zone-link">Busto Arsizio</a>,
+                        <a href="{% url 'city_detail' 'saronno' %}" class="footer-zone-link">Saronno</a> e provincia.
+                    </p>
+                </div>
+
                 <p style="font-size: 0.8rem;">
                     &copy; 2026 Assistenza Elettrodomestici Como. Tutti i diritti riservati. |
                     <a href="{% url 'privacy' %}" style="color: #dddddd;">Privacy Policy</a>
@@ -474,6 +500,14 @@
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
+
+    <a href="https://wa.me/39{{ phone_number|cut:' '|cut:'+' }}?text=Salve,%20ho%20bisogno%20di%20assistenza%20per%20un%20elettrodomestico."
+        class="whatsapp-float" aria-label="Contattaci su WhatsApp" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="35" height="35" fill="white">
+            <path
+                d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.126.549 4.195 1.594 6.01L.062 23.938l6.046-1.584C7.88 23.364 9.94 23.938 12.03 23.938c6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 21.938c-1.801 0-3.565-.484-5.113-1.401l-.367-.217-3.8.995.998-3.702-.238-.379C2.553 15.632 2 13.856 2 12.031 2 6.488 6.488 2 12.031 2c5.542 0 10.031 4.488 10.031 10.031s-4.489 10.031-10.031 10.031zm5.508-7.533c-.302-.151-1.789-.884-2.064-.984-.276-.1-.478-.151-.678.151-.201.301-.779.984-.954 1.185-.175.201-.351.226-.653.075-.301-.151-1.275-.47-2.43-1.503-.898-.804-1.503-1.796-1.678-2.098-.175-.301-.019-.464.132-.614.136-.135.301-.351.452-.526.151-.176.201-.301.301-.502.1-.201.05-.377-.025-.527-.075-.151-.678-1.631-.93-2.234-.245-.586-.494-.506-.678-.515-.175-.008-.376-.008-.578-.008-.201 0-.528.075-.804.376-.276.301-1.054 1.03-1.054 2.509s1.079 2.911 1.23 3.111c.151.201 2.122 3.236 5.138 4.538 2.029.878 2.894.949 3.96.804 1.18-.161 3.511-1.434 4.014-2.816.502-1.382.502-2.56.351-2.816-.15-.251-.552-.402-.853-.553z" />
+        </svg>
+    </a>
 
 </body>
 

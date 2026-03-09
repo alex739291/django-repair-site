@@ -307,7 +307,7 @@ h1 {
 
 #backToTopBtn {
   position: fixed;
-  bottom: 50px;
+  bottom: 100px;
   right: 0;
   width: 50px;
   height: 50px;
@@ -318,8 +318,8 @@ h1 {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9999;
-  /* Увеличен z-index */
+  z-index: 999;
+  /* Lower than WhatsApp button */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -534,19 +534,23 @@ h1 {
 /* === НОВАЯ СТРАНИЦА УСЛУГИ === */
 .service-hero {
   position: relative;
-  height: 350px; /* Увеличена высота для красивого фона */
+  height: 350px;
+  /* Увеличена высота для красивого фона */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  margin-bottom: 0; /* Убрали нижний отступ для эффекта наложения */
-  border-radius: 0 0 40px 40px; /* Плавные скругления внизу */
+  margin-bottom: 0;
+  /* Убрали нижний отступ для эффекта наложения */
+  border-radius: 0 0 40px 40px;
+  /* Плавные скругления внизу */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .overlap-wrapper {
-  margin-top: -100px; /* Контент наезжает на шапку */
+  margin-top: -100px;
+  /* Контент наезжает на шапку */
   position: relative;
   z-index: 10;
   background: #ffffff;
@@ -590,14 +594,30 @@ h1 {
 
 .breadcrumbs {
   margin-bottom: 30px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #666;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .breadcrumbs a {
   color: #003366;
   text-decoration: none;
   font-weight: bold;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs .breadcrumb-static {
+  color: #555;
+  font-weight: 500;
+}
+
+.breadcrumbs .current {
+  color: #666;
 }
 
 .detail-heading {
@@ -1070,6 +1090,7 @@ footer {
     height: 280px;
     border-radius: 0 0 20px 20px;
   }
+
   .overlap-wrapper {
     margin-top: -60px;
     padding: 20px;
@@ -1240,5 +1261,129 @@ footer {
 @media (max-width: 768px) {
   .service-card h3 {
     font-size: 1.1rem;
+  }
+}
+
+/* =========================================
+   12. ZONE DI INTERVENTO (LOCAL SEO)
+   ========================================= */
+.zone-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.zone-column {
+  flex: 1;
+  min-width: 300px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.zone-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.zone-chip {
+  background-color: #eef5fc;
+  color: #003366;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: default;
+}
+
+.zone-chip:hover {
+  background-color: #d35400;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(211, 84, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .zone-column {
+    padding: 20px;
+  }
+}
+
+/* =========================================
+   13. COMUNI LIMITROFI (LOCAL SEO)
+   ========================================= */
+.town-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.town-chip {
+  background-color: #eef5fc;
+  color: #003366;
+  border: 1px solid #cce0f5;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.town-chip:hover {
+  background-color: #003366;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 51, 102, 0.2);
+}
+
+/* =========================================
+   14. WHATSAPP FLOATING BUTTON
+   ========================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: pulse-whatsapp 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  animation: none;
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }

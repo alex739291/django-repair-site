@@ -20,7 +20,7 @@ def home(request):
     
     services = Service.objects.all()
     brands = Brand.objects.all()
-    cities = City.objects.all()
+    cities = City.objects.filter(slug__in=['como', 'varese'])
     context = {
         "services": services,
         "brands": brands,
