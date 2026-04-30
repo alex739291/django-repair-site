@@ -118,7 +118,8 @@ def article_detail(request, slug):
 
 def city_detail(request, slug):
     city = get_object_or_404(City, slug=slug)
-    return render(request, 'pages/city_detail.html', {'city': city})
+    related_cities = City.objects.exclude(id=city.id).order_by('?')[:10]
+    return render(request, 'pages/city_detail.html', {'city': city, 'related_cities': related_cities})
 
 def city_service_detail(request, city_slug, service_slug):
     city = get_object_or_404(City, slug=city_slug)

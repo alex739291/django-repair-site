@@ -19,7 +19,7 @@
         content="{% block og_desc %}Assistenza rapida per lavatrici, frigoriferi, asciugatrici, lavastoviglie. Uscita in giornata!{% endblock %}">
     <meta property="og:image" content="{% block og_image %}{% static 'pages/images/logo.png' %}{% endblock %}">
     <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
-    <link rel="canonical" href="https://www.tecnicoelettrodomesticicomo.it{{ request.path }}">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
     <style>
         /* CRITICAL CSS: Global & Reset */
         body {

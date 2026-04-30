@@ -1,22 +1,14 @@
 {% extends 'pages/base.html' %}
 {% load static %}
 
-{% block title %}
-{% if city.id|divisibleby:2 %}
-Riparazione Elettrodomestici a {{ city.name }} | Pronto Intervento
+{% block title %}Assistenza Elettrodomestici a {{ city.name }} - Riparazione Rapida{% endblock %}
+{% block description %}{% spaceless %}
+{% if city.seo_text %}
+{{ city.seo_text|striptags|truncatechars:155 }}
 {% else %}
-Assistenza Elettrodomestici a {{ city.name }} - Riparazione Rapida
+Riparazione rapida elettrodomestici a {{ city.name }}. Intervento tempestivo, ricambi originali e preventivi trasparenti. Chiama ora!
 {% endif %}
-{% endblock %}
-{% block description %}
-{% if city.id|divisibleby:2 %}
-Cerchi assistenza a {{ city.name }}? Interventi rapidi e garantiti per la riparazione del tuo elettrodomestico. Tecnici
-esperti a domicilio.
-{% else %}
-Riparazione rapida elettrodomestici a {{ city.name }}. Intervento tempestivo, ricambi originali e preventivi
-trasparenti. Chiama ora!
-{% endif %}
-{% endblock %}
+{% endspaceless %}{% endblock %}
 
 {% block content %}
 <script type="application/ld+json">
@@ -47,21 +39,9 @@ trasparenti. Chiama ora!
 </script>
 <section class="city-hero" style="background-color: #003366; color: white; padding: 60px 0; text-align: center;">
     <div class="container">
-        {% if city.id|divisibleby:3 %}
-        <h1 style="color: white; margin-bottom: 15px;">Centro Riparazione Elettrodomestici a {{ city.name }}</h1>
-        {% elif city.id|divisibleby:2 %}
-        <h1 style="color: white; margin-bottom: 15px;">Assistenza e Riparazione Elettrodomestici a {{ city.name }}</h1>
-        {% else %}
         <h1 style="color: white; margin-bottom: 15px;">Assistenza Elettrodomestici a {{ city.name }}</h1>
-        {% endif %}
 
-        {% if city.id|divisibleby:3 %}
-        <p style="font-size: 1.2rem; margin-top: 15px; color: #eee;">Tecnici specializzati a domicilio per la
-            riparazione dei tuoi elettrodomestici.</p>
-        {% else %}
-        <p style="font-size: 1.2rem; margin-top: 15px; color: #eee;">Riparazione rapida e garantita per tutte le
-            principali marche.</p>
-        {% endif %}
+        <p style="font-size: 1.2rem; margin-top: 15px; color: #eee;">Tecnici specializzati a domicilio per la riparazione dei tuoi elettrodomestici. Intervento rapido e garantito.</p>
     </div>
 </section>
 
@@ -75,12 +55,12 @@ trasparenti. Chiama ora!
     <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 50px;">
         <div style="flex: 1; min-width: 300px;">
             <div class="detail-description">
-                {% if city.id|divisibleby:2 %}
                 <h3 style="color: #003366; margin-top: 0;">Hai un guasto a {{ city.name }}? Ci pensiamo noi!</h3>
+                {% if city.seo_text %}
+                {{ city.seo_text|safe|linebreaks }}
                 {% else %}
-                <h3 style="color: #003366; margin-top: 0;">Tecnici specializzati attivi a {{ city.name }}</h3>
-                {% endif %}
                 {{ city.description|safe|linebreaks }}
+                {% endif %}
             </div>
         </div>
         {% if city.map_iframe %}
@@ -92,62 +72,27 @@ trasparenti. Chiama ora!
         {% endif %}
     </div>
 
-    {% if city.slug == 'como' or city.slug == 'varese' %}
+    {% if related_cities %}
     <div
         style="margin-bottom: 50px; background: #ffffff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); border: 1px solid #eee;">
-        <h3 style="color: #003366; margin-bottom: 20px; text-align: center;">Comuni limitrofi coperti dal nostro
-            servizio:</h3>
+        <h3 style="color: #003366; margin-bottom: 20px; text-align: center;">Comuni limitrofi coperti dal nostro servizio:</h3>
         <div class="town-chip-container">
-            {% if city.slug == 'como' %}
-            <a href="{% url 'city_detail' 'brunate' %}" class="town-chip">Brunate</a>
-            <a href="{% url 'city_detail' 'san-fermo-della-battaglia' %}" class="town-chip">San Fermo della
-                Battaglia</a>
-            <a href="{% url 'city_detail' 'lipomo' %}" class="town-chip">Lipomo</a>
-            <a href="{% url 'city_detail' 'cernobbio' %}" class="town-chip">Cernobbio</a>
-            <a href="{% url 'city_detail' 'blevio' %}" class="town-chip">Blevio</a>
-            <a href="{% url 'city_detail' 'tavernerio' %}" class="town-chip">Tavernerio</a>
-            <a href="{% url 'city_detail' 'maslianico' %}" class="town-chip">Maslianico</a>
-            <a href="{% url 'city_detail' 'montano-lucino' %}" class="town-chip">Montano Lucino</a>
-            <a href="{% url 'city_detail' 'cantu' %}" class="town-chip">Cantù</a>
-            <a href="{% url 'city_detail' 'fino-mornasco' %}" class="town-chip">Fino Mornasco</a>
-            <a href="{% url 'city_detail' 'olgiate-comasco' %}" class="town-chip">Olgiate Comasco</a>
-            <a href="{% url 'city_detail' 'erba' %}" class="town-chip">Erba</a>
-            <a href="{% url 'city_detail' 'lurate-caccivio' %}" class="town-chip">Lurate Caccivio</a>
-            <a href="{% url 'city_detail' 'appiano-gentile' %}" class="town-chip">Appiano Gentile</a>
-            <a href="{% url 'city_detail' 'mariano-comense' %}" class="town-chip">Mariano Comense</a>
-            {% elif city.slug == 'varese' %}
-            <a href="{% url 'city_detail' 'casciago' %}" class="town-chip">Casciago</a>
-            <a href="{% url 'city_detail' 'induno-olona' %}" class="town-chip">Induno Olona</a>
-            <a href="{% url 'city_detail' 'malnate' %}" class="town-chip">Malnate</a>
-            <a href="{% url 'city_detail' 'gazzada-schianno' %}" class="town-chip">Gazzada Schianno</a>
-            <a href="{% url 'city_detail' 'lozza' %}" class="town-chip">Lozza</a>
-            <a href="{% url 'city_detail' 'azzate' %}" class="town-chip">Azzate</a>
-            <a href="{% url 'city_detail' 'buguggiate' %}" class="town-chip">Buguggiate</a>
-            <a href="{% url 'city_detail' 'gavirate' %}" class="town-chip">Gavirate</a>
-            <a href="{% url 'city_detail' 'arcisate' %}" class="town-chip">Arcisate</a>
-            <a href="{% url 'city_detail' 'vedano-olona' %}" class="town-chip">Vedano Olona</a>
-            <a href="{% url 'city_detail' 'castiglione-olona' %}" class="town-chip">Castiglione Olona</a>
-            <a href="{% url 'city_detail' 'tradate' %}" class="town-chip">Tradate</a>
-            <a href="{% url 'city_detail' 'gallarate' %}" class="town-chip">Gallarate</a>
-            <a href="{% url 'city_detail' 'busto-arsizio' %}" class="town-chip">Busto Arsizio</a>
-            <a href="{% url 'city_detail' 'saronno' %}" class="town-chip">Saronno</a>
-            {% endif %}
+            {% for related_city in related_cities %}
+            <a href="{% url 'city_detail' related_city.slug %}" class="town-chip">{{ related_city.name }}</a>
+            {% endfor %}
         </div>
     </div>
     {% endif %}
 
-    {% if city.id|divisibleby:3 %}
-    <h2 class="section-title" style="text-align: center; margin-bottom: 30px; color: #003366;">Scopri i Nostri Servizi a
-        {{ city.name }}</h2>
-    {% else %}
     <h2 class="section-title" style="text-align: center; margin-bottom: 30px; color: #003366;">I Nostri Servizi a {{ city.name }}</h2>
-    {% endif %}
     <div class="services-grid">
         {% for service in city.services.all %}
-        <div class="service-card reveal"
-            style="background-image: url('{% if service.image %}{{ service.get_webp_url }}{% endif %}');">
-            <div class="overlay"></div>
-            <div class="card-content">
+        <div class="service-card reveal" style="position: relative; overflow: hidden;">
+            {% if service.image %}
+            <img src="{{ service.get_webp_url }}" alt="Riparazione {{ service.title }} a {{ city.name }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+            {% endif %}
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
+            <div class="card-content" style="position: relative; z-index: 2;">
                 <div class="card-top">
                     <h3>{{ service.title }}</h3>
                     <p class="service-preview">{{ service.short_description }}</p>

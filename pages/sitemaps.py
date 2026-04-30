@@ -47,7 +47,7 @@ class CitySitemap(Sitemap):
     priority = 0.8
 
     def items(self): 
-        return City.objects.all()
+        return City.objects.filter(is_major_city=True)
 
     def location(self, obj): 
         return reverse('city_detail', args=[obj.slug])
@@ -59,7 +59,7 @@ class CityServiceSitemap(Sitemap):
 
     def items(self):
         items_list = []
-        for city in City.objects.prefetch_related('services').all():
+        for city in City.objects.filter(is_major_city=True).prefetch_related('services'):
             for service in city.services.all():
                 items_list.append({'city': city, 'service': service})
         return items_list

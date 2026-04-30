@@ -7,9 +7,14 @@ class City(models.Model):
     slug = models.SlugField(unique=True, verbose_name="URL")
     map_iframe = models.TextField(blank=True, verbose_name="Mappa Google (iframe)")
     description = models.TextField(blank=True, verbose_name="Descrizione SEO")
+    seo_text = models.TextField(blank=True, verbose_name="Testo unico SEO")
+    is_major_city = models.BooleanField(default=False, verbose_name="Città principale")
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('city_detail', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = "Città"
